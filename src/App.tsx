@@ -3,9 +3,10 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from 'react-router-dom';
+
+import Nav from './components/nav/nav.component';
 
 import styled from 'styled-components';
 
@@ -13,26 +14,11 @@ const PageContaniner = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  border: 1px solid red;
 `;
 
 const SwitchContainer = styled.div`
-  border: 1px solid green;
   flex-grow: 1;
   overflow: auto;
-`;
-
-const Nav = styled.nav`
-  border: 1px solid blue;
-  > ul {
-    display: flex;
-
-    > li {
-      width: 33.333%;
-      text-align: center;
-      padding: 16px;
-    }
-  }
 `;
 
 function App() {
@@ -48,19 +34,7 @@ function App() {
             <Route path="*" component={NoMatch} />
           </Switch>
         </SwitchContainer>
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/tags">Tags</Link>
-            </li>
-            <li>
-              <Link to="/budget">My Budget</Link>
-            </li>
-            <li>
-              <Link to="/statistics">Statistics</Link>
-            </li>
-          </ul>
-        </Nav>
+        <Nav />
       </PageContaniner>
     </Router>
   );
