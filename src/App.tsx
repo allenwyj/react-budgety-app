@@ -5,51 +5,44 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-
-import Nav from './components/nav/nav.component';
-
-import styled from 'styled-components';
-
-const PageContaniner = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-`;
-
-const SwitchContainer = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`;
+import Layout from './pages/layout.component';
 
 function App() {
   return (
     <Router>
-      <PageContaniner>
-        <SwitchContainer>
-          <Switch>
-            <Redirect exact from="/" to="/budget" />
-            <Route path="/tags" component={Tags} />
-            <Route path="/budget" component={Budget} />
-            <Route path="/statistics" component={Statistics} />
-            <Route path="*" component={NoMatch} />
-          </Switch>
-        </SwitchContainer>
-        <Nav />
-      </PageContaniner>
+      <Switch>
+        <Redirect exact from="/" to="/budget" />
+        <Route path="/tags" component={Tags} />
+        <Route path="/budget" component={Budget} />
+        <Route path="/statistics" component={Statistics} />
+        <Route path="*" component={NoMatch} />
+      </Switch>
     </Router>
   );
 }
 
 function Statistics() {
-  return <h2>My Statistics</h2>;
+  return (
+    <Layout>
+      <h2>My Statistics</h2>
+    </Layout>
+  );
 }
 
 function Tags() {
-  return <h2>Tags</h2>;
+  return (
+    <Layout>
+      <h2>Tags</h2>
+    </Layout>
+  );
 }
 
 function Budget() {
-  return <h2>Budget</h2>;
+  return (
+    <Layout>
+      <h2>Budget</h2>
+    </Layout>
+  );
 }
 
 function NoMatch() {
