@@ -5,7 +5,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Layout from './pages/layout.component';
+import NoMatch from './pages/404-page/no-match.page';
+import Budget from './pages/budget/budget.page';
+import Statistics from './pages/statistics/statistic.page';
+import Tags from './pages/tags/tag.page';
 
 function App() {
   return (
@@ -19,34 +22,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
-
-function Statistics() {
-  return (
-    <Layout>
-      <h2>My Statistics</h2>
-    </Layout>
-  );
-}
-
-function Tags() {
-  return (
-    <Layout>
-      <h2>Tags</h2>
-    </Layout>
-  );
-}
-
-function Budget() {
-  return (
-    <Layout>
-      <h2>Budget</h2>
-    </Layout>
-  );
-}
-
-function NoMatch() {
-  return <h2>404 Page</h2>;
 }
 
 export default App;
