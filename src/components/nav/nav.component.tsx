@@ -1,30 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Icon from '../icon/icon.component';
 import { NavContainer } from './nav.style';
-
-require('../../icons/dollar.svg');
-require('../../icons/tag.svg');
-require('../../icons/chart.svg');
 
 const Nav = () => (
   <NavContainer>
     <ul>
       <li>
-        <svg className="icon">
-          <use xlinkHref="#tag" />
-        </svg>
+        <Icon name="tag" />
         <Link to="/tags">Tags</Link>
       </li>
       <li>
-        <svg className="icon">
-          <use xlinkHref="#dollar" />
-        </svg>
+        <Icon name="dollar" />
         <Link to="/budget">My Budget</Link>
       </li>
       <li>
-        <svg className="icon">
-          <use xlinkHref="#chart" />
-        </svg>
+        <Icon name="chart" />
         <Link to="/statistics">Statistics</Link>
       </li>
     </ul>
