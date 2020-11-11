@@ -9,7 +9,15 @@ export const NavContainer = styled.nav`
     > li {
       width: 33.333%;
       text-align: center;
-      padding: 16px;
+      padding: 4px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 `;
