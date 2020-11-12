@@ -41,6 +41,16 @@ button {
   outline: none;
 }
 
+/* In order to fix the result of using float,
+    when we use float, it will occur its parent element's
+    height to be 0.
+*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 .icon {
   width: 1em;
   height: 1em;
