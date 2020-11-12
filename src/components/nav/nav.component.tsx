@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Icon from '../icon/icon.component';
 import { NavContainer } from './nav.style';
 
@@ -7,22 +7,22 @@ const Nav = () => (
   <NavContainer>
     <ul>
       <li>
-        <Link to="/tags">
+        <NavLink to="/tags" activeClassName="selected">
           <Icon name="tag" />
           Tags
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/budget">
+        <NavLink to="/budget" activeClassName="selected">
           <Icon name="dollar" />
           My Budget
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/statistics">
+        <NavLink to="/statistics" activeClassName="selected">
           <Icon name="chart" />
           Statistics
-        </Link>
+        </NavLink>
       </li>
     </ul>
   </NavContainer>

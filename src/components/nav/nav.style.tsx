@@ -21,6 +21,13 @@ export const NavContainer = styled.nav`
           width: 24px;
           height: 24px;
         }
+
+        &.selected {
+          color: #ff5000;
+          .icon {
+            fill: #ff5000;
+          }
+        }
       }
     }
   }
