@@ -13,12 +13,14 @@ const ContentContainer = styled.div`
   overflow: auto;
 `;
 
-type Children = any;
+type Props = any;
 
-const Layout = ({ children }: { children: Children }) => {
+const Layout = (props: Props) => {
   return (
     <PageContaniner>
-      <ContentContainer>{children}</ContentContainer>
+      <ContentContainer className={props.className}>
+        {props.children}
+      </ContentContainer>
       <Nav />
     </PageContaniner>
   );

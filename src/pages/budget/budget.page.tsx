@@ -5,6 +5,12 @@ import Layout from '../layout.page';
 const TagsSectionContainer = styled.section`
   background: #ffffff;
   padding: 12px 16px;
+  /* If there is more space, give it to this element */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   > button {
     background: none;
     border: none;
@@ -134,9 +140,17 @@ const NumberPadSection = styled.section`
   }
 `;
 
+// These css styles will be applied to Layout component,
+// if any element of Layout component is specified with the props.className
+const LayoutContainer = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+  border: 3px solid red;
+`;
+
 function Budget() {
   return (
-    <Layout>
+    <LayoutContainer>
       <TagsSectionContainer>
         <TagListContainer>
           <li>Shopping</li>
@@ -177,7 +191,7 @@ function Budget() {
           <button>.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </LayoutContainer>
   );
 }
 
