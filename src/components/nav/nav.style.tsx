@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const NavContainer = styled.nav`
+  background: #ffffff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   line-height: 24px;
   > ul {
