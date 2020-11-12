@@ -7,16 +7,22 @@ const Nav = () => (
   <NavContainer>
     <ul>
       <li>
-        <Icon name="tag" />
-        <Link to="/tags">Tags</Link>
+        <Link to="/tags">
+          <Icon name="tag" />
+          Tags
+        </Link>
       </li>
       <li>
-        <Icon name="dollar" />
-        <Link to="/budget">My Budget</Link>
+        <Link to="/budget">
+          <Icon name="dollar" />
+          My Budget
+        </Link>
       </li>
       <li>
-        <Icon name="chart" />
-        <Link to="/statistics">Statistics</Link>
+        <Link to="/statistics">
+          <Icon name="chart" />
+          Statistics
+        </Link>
       </li>
     </ul>
   </NavContainer>
