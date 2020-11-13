@@ -1,0 +1,10 @@
+import styled from 'styled-components';
+import Layout from '../layout.page';
+
+// These css styles will be applied to Layout component,
+// if any element of Layout component is specified with the props.className
+export const LayoutContainer = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+  border: 3px solid red;
+`;
