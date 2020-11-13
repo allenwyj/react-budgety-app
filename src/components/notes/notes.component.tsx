@@ -2,7 +2,7 @@ import React from 'react';
 import { NotesSection } from './notes.styles';
 
 
-const Notes = () => {
+const Notes: React.FunctionComponent = () => {
   return (
     <NotesSection>
       <label>

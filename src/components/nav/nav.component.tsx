@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Icon from '../icon/icon.component';
 import { NavContainer } from './nav.style';
 
-const Nav = () => (
+const Nav: React.FunctionComponent = () => (
   <NavContainer>
     <ul>
       <li>

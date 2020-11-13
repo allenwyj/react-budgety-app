@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../layout.page';
+import Layout from '../shared/layout.page';
 
 function Statistics() {
   return (

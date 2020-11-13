@@ -1,7 +1,7 @@
 import React from 'react';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
-const Tags = () => {
+const Tags: React.FunctionComponent = () => {
   return (
     <TagsSectionContainer>
       <TagListContainer>

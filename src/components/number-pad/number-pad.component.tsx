@@ -1,7 +1,7 @@
 import React from 'react';
 import { NumberPadSection } from './number-pad.styles';
 
-const NumberPad = () => {
+const NumberPad: React.FunctionComponent = () => {
   return (
     <NumberPadSection>
       <div className="output">100</div>
