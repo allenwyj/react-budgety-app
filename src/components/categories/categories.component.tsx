@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CategoriesSection } from './categories.styles';
 
 const Categories = () => {
+  const categoryMap = { '-': 'Expense', '+': 'Income' };
+  // get type pf categoryMap and get its keys as the type
+  // type x = typeof categoryMap;
+  type Keys = keyof typeof categoryMap;
+
+  const [categoryList] = useState<Keys[]>(['-', '+']);
+  const [category, setCategory] = useState('-');
   return (
     <CategoriesSection>
       <ul>
-        <li className="selected">Expense</li>
-        <li>Income</li>
+        {categoryList.map(el => (
+          <li
+            className={category === el ? 'selected' : ''}
+            onClick={() => setCategory(el)}
+          >
+            {categoryMap[el]}
+          </li>
+        ))}
       </ul>
     </CategoriesSection>
   );
