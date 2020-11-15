@@ -17,28 +17,25 @@ function Budget() {
     amount: 0
   });
 
+  const handleOnChange = (obj: Partial<typeof selected>) =>
+    setSelected({ ...selected, ...obj });
+
   return (
     <LayoutContainer>
-      {selected.tags.join('.')}
-      <br />
-      {selected.note}
-      <Tags
-        value={selected.tags}
-        onChange={tags => setSelected({ ...selected, tags: tags })}
-      />
+      <Tags value={selected.tags} onChange={tags => handleOnChange({ tags })} />
       <Note
         value={selected.note}
         onChange={note => {
-          setSelected({ ...selected, note: note });
+          handleOnChange({ note });
         }}
       />
       <Categories
         value={selected.category}
-        onChange={category => setSelected({ ...selected, category: category })}
+        onChange={category => handleOnChange({ category })}
       />
       <NumberPad
         value={selected.amount}
-        onChange={amount => setSelected({ ...selected, amount: amount })}
+        onChange={amount => handleOnChange({ amount })}
         onOk={() => {}}
       />
     </LayoutContainer>

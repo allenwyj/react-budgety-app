@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NumberPadSection } from './number-pad.styles';
 import { generateOutput, InputString } from './number-pad.utils';
 
@@ -29,7 +29,7 @@ const NumberPad: React.FC<Props> = props => {
 
     // TODO:
     if (text === 'OK') {
-      if (props.onOk) props.onOk;
+      if (props.onOk) props.onOk();
       return;
     }
 
