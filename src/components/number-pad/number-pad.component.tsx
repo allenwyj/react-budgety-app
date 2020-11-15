@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import { NumberPadSection } from './number-pad.styles';
 
 const NumberPad: React.FC = () => {
-  const [output, setOutput] = useState<string>('0');
+  const [output, _setOutput] = useState<string>('0');
+
+  const setOutput = (output: string) => {
+    if (output.length > 16) {
+      output = output.slice(0, 16);
+    } else if (output.length === 0) {
+      output = '0';
+    }
+    _setOutput(output);
+  };
+
   const onClickButtonWrapper = (e: React.MouseEvent) => {
-    const text = (e.target as HTMLButtonElement).textContent; //
+    const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) return;
     switch (text) {
       case '0':
@@ -20,12 +30,18 @@ const NumberPad: React.FC = () => {
         output === '0' ? setOutput(text) : setOutput(output + text);
         break;
       case 'Delete':
+        output.length === 1
+          ? setOutput('0')
+          : setOutput(output.slice(0, output.length - 1));
         break;
       case 'c':
+        setOutput('0');
         break;
       case 'OK':
         break;
       case '.':
+        if (output.indexOf('.') >= 0) return;
+        setOutput(output + '.');
         break;
     }
   };
