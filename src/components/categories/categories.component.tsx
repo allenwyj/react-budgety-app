@@ -14,6 +14,7 @@ const Categories = () => {
       <ul>
         {categoryList.map(el => (
           <li
+            key={el}
             className={category === el ? 'selected' : ''}
             onClick={() => setCategory(el)}
           >

@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NumberPadSection } from './number-pad.styles';
 
 const NumberPad: React.FC = () => {
+  const [output, setOutput] = useState<string>('0');
+  const onClickButtonWrapper = (e: React.MouseEvent) => {
+    const text = (e.target as HTMLButtonElement).textContent; //
+    if (text === null) return;
+    switch (text) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        output === '0' ? setOutput(text) : setOutput(output + text);
+        break;
+      case 'Delete':
+        break;
+      case 'c':
+        break;
+      case 'OK':
+        break;
+      case '.':
+        break;
+    }
+  };
+
   return (
     <NumberPadSection>
-      <div className="output">100</div>
-      <div className="pad clearfix">
+      <div className="output">{output}</div>
+      <div className="pad clearfix" onClick={onClickButtonWrapper}>
         <button>1</button>
         <button>2</button>
         <button>3</button>
