@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NumberPadSection } from './number-pad.styles';
+import { generateOutput, InputString } from './number-pad.utils';
 
 const NumberPad: React.FC = () => {
   const [output, _setOutput] = useState<string>('0');
@@ -16,33 +17,12 @@ const NumberPad: React.FC = () => {
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) return;
-    switch (text) {
-      case '0':
-      case '1':
-      case '2':
-      case '3':
-      case '4':
-      case '5':
-      case '6':
-      case '7':
-      case '8':
-      case '9':
-        output === '0' ? setOutput(text) : setOutput(output + text);
-        break;
-      case 'Delete':
-        output.length === 1
-          ? setOutput('0')
-          : setOutput(output.slice(0, output.length - 1));
-        break;
-      case 'c':
-        setOutput('0');
-        break;
-      case 'OK':
-        break;
-      case '.':
-        if (output.indexOf('.') >= 0) return;
-        setOutput(output + '.');
-        break;
+
+    // TODO:
+    if (text === 'OK') return;
+
+    if ('0123456789.c'.split('').concat(['Delete']).indexOf(text) >= 0) {
+      setOutput(generateOutput(text as InputString, output));
     }
   };
 
