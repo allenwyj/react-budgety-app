@@ -40,6 +40,8 @@ export const generateOutput = (text: InputString, output: string) => {
       if (output.indexOf('.') >= 0) return output;
       output = output + '.';
       break;
+    default:
+      output = '';
   }
 
   return output;
