@@ -1,8 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { NoteSection } from './note.styles';
 
-const Note: React.FC = () => {
-  const [note, setNote] = useState<string>('');
+type Props = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+const Note: React.FC<Props> = props => {
+  const note = props.value;
+  const setNote = props.onChange;
   const refInput = useRef<HTMLInputElement>(null);
 
   // set note when user leaves the field
@@ -18,6 +24,7 @@ const Note: React.FC = () => {
         <input
           type="text"
           placeholder="describe your new transaction here"
+          ref={refInput}
           defaultValue={note}
           onBlur={onBlur}
         />

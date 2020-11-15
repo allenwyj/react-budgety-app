@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
-const Tags: React.FC = () => {
+interface Props {
+  value: string[];
+  onChange: (selected: string[]) => void;
+}
+
+// In TS,
+// declaring the type of props by <Props> can allow the component
+// to take props from its parent.
+const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
   // declare type of the element
   const [tags, setTags] = useState<string[]>([
     'Shopping',
@@ -10,7 +18,7 @@ const Tags: React.FC = () => {
     'Transport'
   ]);
 
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const selectedTags = value;
 
   const onAddTag = () => {
     const newTag = window.prompt(`What's your new tag name?`);
@@ -20,13 +28,14 @@ const Tags: React.FC = () => {
     }
   };
 
+  // onChange is going to let parent component knows we have updates here.
   const onToggleTag = (tag: string) => {
     console.log(tag);
     const index = selectedTags.indexOf(tag);
     if (index >= 0) {
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      onChange(selectedTags.filter(t => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      onChange([...selectedTags, tag]);
     }
   };
 
