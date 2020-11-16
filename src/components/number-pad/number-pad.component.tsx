@@ -13,6 +13,7 @@ const NumberPad: React.FC<Props> = props => {
 
   const setOutput = (output: string) => {
     let value;
+    // TODO: BUG: can't type . with any number.
     if (output.length > 16) {
       value = parseFloat(output.slice(0, 16));
     } else if (output.length === 0) {

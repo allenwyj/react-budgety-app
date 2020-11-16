@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useTags } from '../../useTags';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
 interface Props {
@@ -10,13 +11,7 @@ interface Props {
 // declaring the type of props by <Props> can allow the component
 // to take props from its parent.
 const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
-  // declare type of the element
-  const [tags, setTags] = useState<string[]>([
-    'Shopping',
-    'Food',
-    'Accomodation',
-    'Transport'
-  ]);
+  const { tags, setTags } = useTags();
 
   const selectedTags = value;
 
