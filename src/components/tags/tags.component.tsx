@@ -1,4 +1,5 @@
 import React from 'react';
+import { createId } from '../../lib/createId';
 import { useTags } from '../../useTags';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
@@ -19,7 +20,7 @@ const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
     const newTag = window.prompt(`What's your new tag name?`);
 
     if (newTag !== null) {
-      setTags([...tags, { id: Math.random(), name: newTag }]);
+      setTags([...tags, { id: createId(), name: newTag }]);
     }
   };
 
