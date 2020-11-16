@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Icon from '../../components/icon/icon.component';
 import { useTags } from '../../useTags';
 import Layout from '../shared/layout.page';
-import { Button, CenterContainer, Space, TagListContainer } from './tag.styles';
+import { Button, CenterContainer, Space, TagListContainer } from './tags-collection.styles';
 
-function Tags() {
+function TagsCollection() {
   const { tags, setTags } = useTags();
 
   return (
@@ -12,8 +13,10 @@ function Tags() {
       <TagListContainer>
         {tags.map(tag => (
           <li key={tag}>
-            <span className="oneLine">{tag}</span>
-            <Icon name="right" />
+            <Link to={'/tags/' + tag}>
+              <span className="oneLine">{tag}</span>
+              <Icon name="right" />
+            </Link>
           </li>
         ))}
       </TagListContainer>
@@ -26,4 +29,4 @@ function Tags() {
   );
 }
 
-export default Tags;
+export default TagsCollection;
