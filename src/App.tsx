@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import NoMatch from './pages/404-page/no-match.page';
 import Budget from './pages/budget/budget.page';
 import Statistics from './pages/statistics/statistic.page';
-import Tags from './pages/tags/tag.page';
+import Tags from './pages/tag/tag.page';
 
 const AppWrapper = styled.div`
   color: #333;

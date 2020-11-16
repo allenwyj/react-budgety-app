@@ -31,6 +31,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.2;
+  background: #f5f5f5;
 }
 
 button {
@@ -54,4 +55,10 @@ button {
 .icon {
   width: 1em;
   height: 1em;
+}
+
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
