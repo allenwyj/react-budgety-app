@@ -23,7 +23,7 @@ function App() {
         <Switch>
           <Redirect exact from="/" to="/budget" />
           <Route exact path="/tags" component={TagsCollection} />
-          <Route exact path="/tags/:tag" component={Tag} />
+          <Route exact path="/tags/:id" component={Tag} />
           <Route exact path="/budget" component={Budget} />
           <Route exact path="/statistics" component={Statistics} />
           <Route path="*" component={NoMatch} />
