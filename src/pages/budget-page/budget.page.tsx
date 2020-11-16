@@ -11,18 +11,22 @@ type Category = '-' | '+';
 
 function Budget() {
   const [selected, setSelected] = useState({
-    tags: [] as string[],
+    tagIds: [] as number[],
     note: '',
     category: '-' as Category,
     amount: 0
   });
 
+  // Partial: only needs to match part of types
   const handleOnChange = (obj: Partial<typeof selected>) =>
     setSelected({ ...selected, ...obj });
 
   return (
     <LayoutContainer>
-      <Tags value={selected.tags} onChange={tags => handleOnChange({ tags })} />
+      <Tags
+        value={selected.tagIds}
+        onChange={tagIds => handleOnChange({ tagIds })}
+      />
       <Note
         value={selected.note}
         onChange={note => {

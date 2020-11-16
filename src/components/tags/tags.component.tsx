@@ -3,8 +3,8 @@ import { useTags } from '../../useTags';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
 interface Props {
-  value: string[];
-  onChange: (selected: string[]) => void;
+  value: number[];
+  onChange: (selected: number[]) => void;
 }
 
 // In TS,
@@ -13,37 +13,40 @@ interface Props {
 const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
   const { tags, setTags } = useTags();
 
-  const selectedTags = value;
+  const selectedTagIds = value;
 
   const onAddTag = () => {
     const newTag = window.prompt(`What's your new tag name?`);
 
     if (newTag !== null) {
-      setTags([...tags, newTag]);
+      setTags([...tags, { id: Math.random(), name: newTag }]);
     }
   };
 
   // onChange is going to let parent component knows we have updates here.
-  const onToggleTag = (tag: string) => {
-    console.log(tag);
-    const index = selectedTags.indexOf(tag);
+  const onToggleTag = (tagId: number) => {
+    console.log(tagId);
+    const index = selectedTagIds.indexOf(tagId);
     if (index >= 0) {
-      onChange(selectedTags.filter(t => t !== tag));
+      onChange(selectedTagIds.filter(t => t !== tagId));
     } else {
-      onChange([...selectedTags, tag]);
+      onChange([...selectedTagIds, tagId]);
     }
   };
+
+  const getClass = (tagId: number) =>
+    selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
 
   return (
     <TagsSectionContainer>
       <TagListContainer>
         {tags.map(tag => (
           <li
-            key={tag}
-            onClick={() => onToggleTag(tag)}
-            className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}
+            key={tag.id}
+            onClick={() => onToggleTag(tag.id)}
+            className={getClass(tag.id)}
           >
-            {tag}
+            {tag.name}
           </li>
         ))}
       </TagListContainer>

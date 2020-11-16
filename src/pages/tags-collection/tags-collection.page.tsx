@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import Icon from '../../components/icon/icon.component';
 import { useTags } from '../../useTags';
 import Layout from '../shared/layout.page';
-import { Button, CenterContainer, Space, TagListContainer } from './tags-collection.styles';
+import {
+  Button,
+  CenterContainer,
+  Space,
+  TagListContainer
+} from './tags-collection.styles';
 
 function TagsCollection() {
   const { tags, setTags } = useTags();
@@ -12,9 +17,9 @@ function TagsCollection() {
     <Layout>
       <TagListContainer>
         {tags.map(tag => (
-          <li key={tag}>
-            <Link to={'/tags/' + tag}>
-              <span className="oneLine">{tag}</span>
+          <li key={tag.id}>
+            <Link to={'/tags/' + tag.id}>
+              <span className="oneLine">{tag.name}</span>
               <Icon name="right" />
             </Link>
           </li>
