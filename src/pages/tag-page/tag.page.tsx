@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../../components/button/button.component';
+import { CenterContainer } from '../../components/center-container/center-container.styles';
 import FormInput from '../../components/form-input/form-input.component';
 import TopBar from '../../components/top-bar/top-bar.component';
 import { useTags } from '../../useTags';
@@ -25,9 +26,9 @@ const Tag: React.FC = () => {
           placeholder="Enter your tag name..."
         />
       </InputWrapper>
-      <div>
+      <CenterContainer>
         <Button>Edit Tag</Button>
-      </div>
+      </CenterContainer>
     </Layout>
   );
 };

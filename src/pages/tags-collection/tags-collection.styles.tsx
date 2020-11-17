@@ -15,7 +15,3 @@ export const TagListContainer = styled.ol`
     }
   }
 `;
-
-export const Space = styled.div`
-  height: 20px;
-`;

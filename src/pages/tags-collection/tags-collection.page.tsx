@@ -7,7 +7,8 @@ import Icon from '../../components/icon/icon.component';
 
 import Layout from '../shared/layout.page';
 import { CenterContainer } from '../../components/center-container/center-container.styles';
-import { Space, TagListContainer } from './tags-collection.styles';
+import { TagListContainer } from './tags-collection.styles';
+import { SpaceDivider } from '../../components/space-divider/space-divider.styles';
 
 function TagsCollection() {
   const { tags, setTags } = useTags();
@@ -25,9 +26,9 @@ function TagsCollection() {
         ))}
       </TagListContainer>
       <CenterContainer>
-        <Space />
+        <SpaceDivider />
         <Button>Add Tag</Button>
-        <Space />
+        <SpaceDivider />
       </CenterContainer>
     </Layout>
   );
