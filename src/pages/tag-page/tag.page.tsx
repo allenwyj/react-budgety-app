@@ -27,7 +27,7 @@ const Tag: React.FC = () => {
         </label>
       </div>
       <div>
-        <Button name="Edit Tag" />
+        <Button>Edit Tag</Button>
       </div>
     </Layout>
   );

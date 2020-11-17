@@ -27,7 +27,7 @@ function TagsCollection() {
       </TagListContainer>
       <CenterContainer>
         <Space />
-        <Button name="Add Tag" />
+        <Button>Add Tag</Button>
         <Space />
       </CenterContainer>
     </Layout>
