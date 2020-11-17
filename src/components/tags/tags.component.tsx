@@ -1,5 +1,4 @@
 import React from 'react';
-import { createId } from '../../lib/createId';
 import { useTags } from '../../useTags';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
@@ -12,17 +11,9 @@ interface Props {
 // declaring the type of props by <Props> can allow the component
 // to take props from its parent.
 const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
-  const { tags, setTags } = useTags();
+  const { tags, addTag } = useTags();
 
   const selectedTagIds = value;
-
-  const onAddTag = () => {
-    const newTag = window.prompt(`What's your new tag name?`);
-
-    if (newTag !== null) {
-      setTags([...tags, { id: createId(), name: newTag }]);
-    }
-  };
 
   // onChange is going to let parent component knows we have updates here.
   const onToggleTag = (tagId: number) => {
@@ -51,7 +42,7 @@ const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
           </li>
         ))}
       </TagListContainer>
-      <button onClick={onAddTag}>new tag</button>
+      <button onClick={addTag}>new tag</button>
     </TagsSectionContainer>
   );
 };

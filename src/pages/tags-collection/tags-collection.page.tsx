@@ -11,7 +11,7 @@ import { TagListContainer } from './tags-collection.styles';
 import { SpaceDivider } from '../../components/space-divider/space-divider.styles';
 
 function TagsCollection() {
-  const { tags, setTags } = useTags();
+  const { tags, addTag } = useTags();
 
   return (
     <Layout>
@@ -27,7 +27,7 @@ function TagsCollection() {
       </TagListContainer>
       <CenterContainer>
         <SpaceDivider />
-        <Button onClick={() => {}}>Add Tag</Button>
+        <Button onClick={addTag}>Add Tag</Button>
         <SpaceDivider />
       </CenterContainer>
     </Layout>
