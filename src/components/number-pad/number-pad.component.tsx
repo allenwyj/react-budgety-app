@@ -1,41 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NumberPadSection } from './number-pad.styles';
 import { generateOutput, InputString } from './number-pad.utils';
 
 type Props = {
   value: number;
   onChange: (value: number) => void;
-  onOk?: () => void;
+  onOk: () => void;
 };
 
 const NumberPad: React.FC<Props> = props => {
-  const output = props.value.toString();
+  const [output, setOutput] = useState(props.value.toString());
 
-  const setOutput = (output: string) => {
-    let value;
-    // TODO: BUG: can't type . with any number.
+  const displayOutput = (output: string) => {
+    let newOutput: string;
     if (output.length > 16) {
-      value = parseFloat(output.slice(0, 16));
+      newOutput = output.slice(0, 16);
     } else if (output.length === 0) {
-      value = 0;
+      newOutput = '0';
     } else {
-      value = parseFloat(output);
+      newOutput = output;
     }
-    props.onChange(value);
+    setOutput(newOutput);
+    props.onChange(parseFloat(newOutput));
   };
 
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) return;
 
-    // TODO:
     if (text === 'OK') {
-      if (props.onOk) props.onOk();
+      props.onOk();
+      displayOutput('');
       return;
     }
 
     if ('0123456789.c'.split('').concat(['Delete']).indexOf(text) >= 0) {
-      setOutput(generateOutput(text as InputString, output));
+      displayOutput(generateOutput(text as InputString, output));
     }
   };
 

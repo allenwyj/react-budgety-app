@@ -18,36 +18,37 @@ const DEFAULT_RECORD = {
 };
 
 function Budget() {
-  const [selected, setSelected] = useState(DEFAULT_RECORD);
+  const [newRecord, setNewRecord] = useState(DEFAULT_RECORD);
 
   const { addRecord } = useRecords();
   // Partial: only needs to match part of types
-  const handleOnChange = (obj: Partial<typeof selected>) =>
-    setSelected({ ...selected, ...obj });
+  const handleOnChange = (obj: Partial<typeof newRecord>) =>
+    setNewRecord({ ...newRecord, ...obj });
 
   const saveNewRecord = () => {
-    addRecord(selected);
-    setSelected(DEFAULT_RECORD);
+    if (addRecord(newRecord)) {
+      setNewRecord(DEFAULT_RECORD);
+    }
   };
 
   return (
     <LayoutContainer>
       <Tags
-        value={selected.tagIds}
+        value={newRecord.tagIds}
         onChange={tagIds => handleOnChange({ tagIds })}
       />
       <Note
-        value={selected.note}
+        value={newRecord.note}
         onChange={note => {
           handleOnChange({ note });
         }}
       />
       <Categories
-        value={selected.category}
+        value={newRecord.category}
         onChange={category => handleOnChange({ category })}
       />
       <NumberPad
-        value={selected.amount}
+        value={newRecord.amount}
         onChange={amount => handleOnChange({ amount })}
         onOk={saveNewRecord}
       />

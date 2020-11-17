@@ -35,6 +35,7 @@ export const generateOutput = (text: InputString, output: string) => {
       output = '';
       break;
     case 'OK':
+      output = '';
       break;
     case '.':
       if (output.indexOf('.') >= 0) return output;

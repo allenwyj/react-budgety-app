@@ -29,15 +29,16 @@ export const useRecords = () => {
   const addRecord = (newRecord: MyNewRecord) => {
     if (newRecord.amount <= 0) {
       alert('Sorry, amount should be greater than 0!');
-      return;
+      return false;
     }
     if (newRecord.tagIds.length === 0) {
       alert('Please select at least one tag for your record!');
-      return;
+      return false;
     }
     const record = { ...newRecord, createdAt: new Date().toISOString() };
     setRecords([...records, record]);
     alert('Saved!');
+    return true;
   };
 
   return { records, addRecord };
