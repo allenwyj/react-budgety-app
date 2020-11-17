@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTags } from '../../useTags';
+
 import Button from '../../components/button/button.component';
 import Icon from '../../components/icon/icon.component';
-import { useTags } from '../../useTags';
+
 import Layout from '../shared/layout.page';
-import {
-  CenterContainer,
-  Space,
-  TagListContainer
-} from './tags-collection.styles';
+import { CenterContainer } from '../../components/center-container/center-container.styles';
+import { Space, TagListContainer } from './tags-collection.styles';
 
 function TagsCollection() {
   const { tags, setTags } = useTags();

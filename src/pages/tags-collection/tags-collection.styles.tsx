@@ -16,13 +16,6 @@ export const TagListContainer = styled.ol`
   }
 `;
 
-export const CenterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Space = styled.div`
   height: 20px;
 `;
