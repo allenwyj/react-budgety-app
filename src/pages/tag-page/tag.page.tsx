@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../../components/button/button.component';
+import FormInput from '../../components/form-input/form-input.component';
 import TopBar from '../../components/top-bar/top-bar.component';
 import { useTags } from '../../useTags';
 import Layout from '../shared/layout.page';
+import { InputWrapper } from './tag.styles';
 
 type Params = {
   id: string;
@@ -16,13 +18,13 @@ const Tag: React.FC = () => {
   return (
     <Layout>
       <TopBar />
-      {tag ? <div>{tag.name}</div> : <div>Sorry, there is no this tag</div>}
-      <div>
-        <label>
-          <span>Description</span>
-          <input type="text" placeholder="Description" />
-        </label>
-      </div>
+      <InputWrapper>
+        <FormInput
+          label="Tag Name"
+          type="text"
+          placeholder="Enter your tag name..."
+        />
+      </InputWrapper>
       <div>
         <Button>Edit Tag</Button>
       </div>
