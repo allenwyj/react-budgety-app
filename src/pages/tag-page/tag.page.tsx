@@ -12,6 +12,7 @@ import { InputWrapper } from './tag.styles';
 type Params = {
   id: string;
 };
+
 const TagPage: React.FC = () => {
   const { findTag, updateTag, deleteTag } = useTags();
   let { id: idString } = useParams<Params>();

@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 // import all svg files and require them from a folder
 let importAll = (requireContext: __WebpackModuleApi.RequireContext) =>
@@ -10,17 +11,20 @@ try {
 }
 
 // name can be optional
-type Props = {
+interface Props {
   name?: string;
-};
+  className?: string;
+  [x: string]: any;
+}
 
 const Icon: React.FC<Props> = props => {
+  const { name, children, className, ...rest } = props;
   return (
-    <svg className="icon">
+    <svg className={classnames('icon', className)} {...rest}>
       {
         // render the svg when props.name has value
       }
-      {props.name && <use xlinkHref={`#${props.name}`} />}
+      {name && <use xlinkHref={`#${name}`} />}
     </svg>
   );
 };
