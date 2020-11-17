@@ -27,7 +27,6 @@ function Budget() {
 
   const saveNewRecord = () => {
     addRecord(selected);
-    alert('Saved!');
     setSelected(DEFAULT_RECORD);
   };
 
