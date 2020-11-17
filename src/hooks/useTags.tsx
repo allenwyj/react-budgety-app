@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useUpdate } from './hooks/useUpdate';
-import { createId } from './lib/createId';
+import { useUpdate } from './useUpdate';
+import { createId } from '../lib/createId';
 
 type DefaultTags = { id: number; name: string };
 

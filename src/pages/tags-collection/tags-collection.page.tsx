@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTags } from '../../useTags';
+import { useTags } from '../../hooks/useTags';
 
 import Button from '../../components/button/button.component';
 import Icon from '../../components/icon/icon.component';

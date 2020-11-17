@@ -1,5 +1,3 @@
-import { parse } from '@babel/core';
-
 // encapsulation by function
 let id = parseInt(window.localStorage.getItem('idMax') || '0');
 

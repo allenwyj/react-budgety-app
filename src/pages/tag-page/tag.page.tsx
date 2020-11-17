@@ -5,7 +5,7 @@ import { CenterContainer } from '../../components/center-container/center-contai
 import FormInput from '../../components/form-input/form-input.component';
 import { SpaceDivider } from '../../components/space-divider/space-divider.styles';
 import TopBar from '../../components/top-bar/top-bar.component';
-import { useTags } from '../../useTags';
+import { useTags } from '../../hooks/useTags';
 import Layout from '../shared/layout.page';
 import { InputWrapper } from './tag.styles';
 

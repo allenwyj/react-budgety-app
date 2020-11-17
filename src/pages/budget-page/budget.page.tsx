@@ -6,20 +6,30 @@ import Tags from '../../components/tags/tags.component';
 import NumberPad from '../../components/number-pad/number-pad.component';
 
 import { LayoutContainer } from './budget.styles';
+import { useRecords } from '../../hooks/useRecords';
 
 type Category = '-' | '+';
 
-function Budget() {
-  const [selected, setSelected] = useState({
-    tagIds: [] as number[],
-    note: '',
-    category: '-' as Category,
-    amount: 0
-  });
+const DEFAULT_RECORD = {
+  tagIds: [] as number[],
+  note: '',
+  category: '-' as Category,
+  amount: 0
+};
 
+function Budget() {
+  const [selected, setSelected] = useState(DEFAULT_RECORD);
+
+  const { addRecord } = useRecords();
   // Partial: only needs to match part of types
   const handleOnChange = (obj: Partial<typeof selected>) =>
     setSelected({ ...selected, ...obj });
+
+  const saveNewRecord = () => {
+    addRecord(selected);
+    alert('Saved!');
+    setSelected(DEFAULT_RECORD);
+  };
 
   return (
     <LayoutContainer>
@@ -40,7 +50,7 @@ function Budget() {
       <NumberPad
         value={selected.amount}
         onChange={amount => handleOnChange({ amount })}
-        onOk={() => {}}
+        onOk={saveNewRecord}
       />
     </LayoutContainer>
   );
