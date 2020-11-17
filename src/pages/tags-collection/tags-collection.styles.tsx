@@ -16,14 +16,6 @@ export const TagListContainer = styled.ol`
   }
 `;
 
-export const Button = styled.button`
-  font-size: 18px;
-  border: none;
-  padding: 8px 12px;
-  background: #ff5000;
-  color: white;
-`;
-
 export const CenterContainer = styled.div`
   display: flex;
   flex-direction: column;

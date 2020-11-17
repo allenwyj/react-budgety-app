@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../../components/button/button.component';
 import Icon from '../../components/icon/icon.component';
 import { useTags } from '../../useTags';
 import Layout from '../shared/layout.page';
 import {
-  Button,
   CenterContainer,
   Space,
   TagListContainer
@@ -27,7 +27,7 @@ function TagsCollection() {
       </TagListContainer>
       <CenterContainer>
         <Space />
-        <Button>Add Tag</Button>
+        <Button name="Add Tag" />
         <Space />
       </CenterContainer>
     </Layout>
