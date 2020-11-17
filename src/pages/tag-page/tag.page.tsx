@@ -13,10 +13,11 @@ type Params = {
   id: string;
 };
 const TagPage: React.FC = () => {
-  const { findTag } = useTags();
-  let { id } = useParams<Params>();
-  const tag = findTag(parseInt(id));
+  const { findTag, updateTag } = useTags();
+  let { id: idString } = useParams<Params>();
+  const tag = findTag(parseInt(idString));
 
+  // TODO: onChange should be submitted when user clicks a submit button
   return (
     <Layout>
       <TopBar />
@@ -26,6 +27,9 @@ const TagPage: React.FC = () => {
           type="text"
           placeholder="Enter your tag name..."
           value={tag.name}
+          onChange={e => {
+            updateTag(tag.id, { name: e.target.value });
+          }}
         />
       </InputWrapper>
       <CenterContainer>
