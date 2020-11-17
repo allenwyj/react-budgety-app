@@ -16,8 +16,10 @@ export const useTags = () => {
   const [tags, setTags] = useState<{ id: number; name: string }[]>(
     DEFAULT_TAGS
   );
+
   // encapsulate findTag function
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
+
   const findTagIndexById = (id: number) => {
     let result = -1;
     for (let i = 0; i < tags.length; i++) {
@@ -28,6 +30,7 @@ export const useTags = () => {
     }
     return result;
   };
+
   const updateTag = (id: number, obj: { name: string }) => {
     const index = findTagIndexById(id);
     // deep clone tags array
@@ -37,11 +40,21 @@ export const useTags = () => {
     setTags(tagsClone);
   };
 
+  const deleteTag = (id: number) => {
+    const index = findTagIndexById(id);
+    // deep clone tags array
+    const tagsClone = JSON.parse(JSON.stringify(tags));
+    // delete one item at index
+    tagsClone.splice(index, 1);
+    setTags(tagsClone);
+  };
+
   return {
     tags,
     setTags,
     findTag,
     findTagIndexById,
-    updateTag
+    updateTag,
+    deleteTag
   };
 };

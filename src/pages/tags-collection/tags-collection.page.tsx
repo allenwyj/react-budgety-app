@@ -27,7 +27,7 @@ function TagsCollection() {
       </TagListContainer>
       <CenterContainer>
         <SpaceDivider />
-        <Button>Add Tag</Button>
+        <Button onClick={() => {}}>Add Tag</Button>
         <SpaceDivider />
       </CenterContainer>
     </Layout>

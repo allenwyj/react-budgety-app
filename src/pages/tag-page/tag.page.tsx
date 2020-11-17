@@ -13,14 +13,13 @@ type Params = {
   id: string;
 };
 const TagPage: React.FC = () => {
-  const { findTag, updateTag } = useTags();
+  const { findTag, updateTag, deleteTag } = useTags();
   let { id: idString } = useParams<Params>();
   const tag = findTag(parseInt(idString));
 
-  // TODO: onChange should be submitted when user clicks a submit button
-  return (
-    <Layout>
-      <TopBar />
+  // generate tag content only when the tag exists
+  const generateContent = (tag: { id: number; name: string }) => (
+    <div>
       <InputWrapper>
         <FormInput
           label="Tag Name"
@@ -36,8 +35,20 @@ const TagPage: React.FC = () => {
         <SpaceDivider />
         <SpaceDivider />
         <SpaceDivider />
-        <Button>Edit Tag</Button>
+        <Button onClick={() => deleteTag(tag.id)}>Delete</Button>
       </CenterContainer>
+    </div>
+  );
+
+  // TODO: onChange should be submitted when user clicks a submit button
+  return (
+    <Layout>
+      <TopBar />
+      {tag ? (
+        generateContent(tag)
+      ) : (
+        <CenterContainer>These is no this tag</CenterContainer>
+      )}
     </Layout>
   );
 };
