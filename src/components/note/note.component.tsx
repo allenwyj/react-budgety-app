@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { ChangeEventHandler, useRef } from 'react';
+import FormInput from '../form-input/form-input.component';
 import { NoteSection } from './note.styles';
 
 type Props = {
@@ -8,27 +9,20 @@ type Props = {
 
 const Note: React.FC<Props> = props => {
   const note = props.value;
-  const setNote = props.onChange;
-  const refInput = useRef<HTMLInputElement>(null);
 
   // set note when user leaves the field
-  const onBlur = () => {
-    if (refInput.current !== null) {
-      setNote(refInput.current.value);
-    }
+  const onChange: ChangeEventHandler<HTMLInputElement> = e => {
+    props.onChange(e.target.value);
   };
   return (
     <NoteSection>
-      <label>
-        <span>Description</span>
-        <input
-          type="text"
-          placeholder="describe your new transaction here"
-          ref={refInput}
-          defaultValue={note}
-          onBlur={onBlur}
-        />
-      </label>
+      <FormInput
+        type="text"
+        label="Description"
+        placeholder="Type something..."
+        value={note}
+        onChange={onChange}
+      />
     </NoteSection>
   );
 };
