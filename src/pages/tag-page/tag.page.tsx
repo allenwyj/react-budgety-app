@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../../components/button/button.component';
-import Icon from '../../components/icon/icon.component';
+import TopBar from '../../components/top-bar/top-bar.component';
 import { useTags } from '../../useTags';
 import Layout from '../shared/layout.page';
 
@@ -15,10 +15,7 @@ const Tag: React.FC = () => {
 
   return (
     <Layout>
-      <header>
-        <Icon name="left" />
-        <span>Edit Tag</span>
-      </header>
+      <TopBar />
       {tag ? <div>{tag.name}</div> : <div>Sorry, there is no this tag</div>}
       <div>
         <label>

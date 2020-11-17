@@ -9,12 +9,18 @@ try {
   console.log(error);
 }
 
-type Name = string;
+// name can be optional
+type Props = {
+  name?: string;
+};
 
-const Icon = ({ name }: { name: Name }) => {
+const Icon: React.FC<Props> = props => {
   return (
     <svg className="icon">
-      <use xlinkHref={`#${name}`} />
+      {
+        // render the svg when props.name has value
+      }
+      {props.name && <use xlinkHref={`#${props.name}`} />}
     </svg>
   );
 };
