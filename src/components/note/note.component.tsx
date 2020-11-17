@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useRef } from 'react';
+import React, { ChangeEventHandler } from 'react';
 import FormInput from '../form-input/form-input.component';
 import { NoteSection } from './note.styles';
 
