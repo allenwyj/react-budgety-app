@@ -20,40 +20,29 @@ export const useTags = () => {
   // encapsulate findTag function
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
 
-  const findTagIndexById = (id: number) => {
-    let result = -1;
-    for (let i = 0; i < tags.length; i++) {
-      if (tags[i].id === id) {
-        result = i;
-        break;
-      }
-    }
-    return result;
-  };
+  // const findTagIndexById = (id: number) => {
+  //   let result = -1;
+  //   for (let i = 0; i < tags.length; i++) {
+  //     if (tags[i].id === id) {
+  //       result = i;
+  //       break;
+  //     }
+  //   }
+  //   return result;
+  // };
 
-  const updateTag = (id: number, obj: { name: string }) => {
-    const index = findTagIndexById(id);
-    // deep clone tags array
-    const tagsClone = JSON.parse(JSON.stringify(tags));
-    // delete one item at index, and add a new obj
-    tagsClone.splice(index, 1, { id: id, name: obj.name });
-    setTags(tagsClone);
+  const updateTag = (id: number, { name }: { name: string }) => {
+    setTags(tags.map(tag => (tag.id === id ? { id, name } : tag)));
   };
 
   const deleteTag = (id: number) => {
-    const index = findTagIndexById(id);
-    // deep clone tags array
-    const tagsClone = JSON.parse(JSON.stringify(tags));
-    // delete one item at index
-    tagsClone.splice(index, 1);
-    setTags(tagsClone);
+    setTags(tags.filter(tag => tag.id !== id));
   };
 
   return {
     tags,
     setTags,
     findTag,
-    findTagIndexById,
     updateTag,
     deleteTag
   };
