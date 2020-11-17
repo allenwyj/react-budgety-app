@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const LabelContainer = styled.label`
+// passing a custom props
+interface Props {
+  readonly isHigher?: boolean;
+}
+
+export const LabelContainer = styled.label<Props>`
   display: flex;
   align-items: center;
   > span {
@@ -10,7 +15,7 @@ export const LabelContainer = styled.label`
   > input {
     display: block;
     width: 100%;
-    height: 72px;
+    height: ${({ isHigher }) => (isHigher ? '72px' : '44px')};
     background: none;
     border: none;
   }

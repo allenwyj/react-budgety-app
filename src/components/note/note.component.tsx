@@ -22,6 +22,7 @@ const Note: React.FC<Props> = props => {
         placeholder="Type something..."
         value={note}
         onChange={onChange}
+        isHigher
       />
     </NoteSection>
   );
