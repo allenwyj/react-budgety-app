@@ -9,7 +9,7 @@ type Props = {
 };
 
 const NumberPad: React.FC<Props> = props => {
-  const [output, setOutput] = useState(props.value.toString());
+  const [amount, setAmount] = useState(props.value.toString());
 
   const displayOutput = (output: string) => {
     let newOutput: string;
@@ -20,7 +20,7 @@ const NumberPad: React.FC<Props> = props => {
     } else {
       newOutput = output;
     }
-    setOutput(newOutput);
+    setAmount(newOutput);
     props.onChange(parseFloat(newOutput));
   };
 
@@ -30,18 +30,20 @@ const NumberPad: React.FC<Props> = props => {
 
     if (text === 'OK') {
       props.onOk();
-      displayOutput('');
+      // reset number
+      setAmount('0');
       return;
     }
 
     if ('0123456789.c'.split('').concat(['Delete']).indexOf(text) >= 0) {
-      displayOutput(generateOutput(text as InputString, output));
+      displayOutput(generateOutput(text as InputString, amount));
     }
   };
 
   return (
     <NumberPadSection>
-      <div className="output">{output}</div>
+      {console.log('组件刷新了！！！' + props.value + amount)}
+      <div className="output">{amount}</div>
       <div className="pad clearfix" onClick={onClickButtonWrapper}>
         <button>1</button>
         <button>2</button>

@@ -5,7 +5,7 @@ import Note from '../../components/note/note.component';
 import Tags from '../../components/tags/tags.component';
 import NumberPad from '../../components/number-pad/number-pad.component';
 
-import { LayoutContainer } from './budget.styles';
+import { CategoryWrapper, LayoutContainer } from './budget.styles';
 import { useRecords } from '../../hooks/useRecords';
 
 type Category = '-' | '+';
@@ -27,7 +27,13 @@ function Budget() {
 
   const saveNewRecord = () => {
     if (addRecord(newRecord)) {
-      setNewRecord(DEFAULT_RECORD);
+      // reset all fields
+      setNewRecord({
+        tagIds: [],
+        note: '',
+        category: '-',
+        amount: 0
+      });
     }
   };
 
@@ -43,10 +49,12 @@ function Budget() {
           handleOnChange({ note });
         }}
       />
-      <Categories
-        value={newRecord.category}
-        onChange={category => handleOnChange({ category })}
-      />
+      <CategoryWrapper>
+        <Categories
+          value={newRecord.category}
+          onChange={category => handleOnChange({ category })}
+        />
+      </CategoryWrapper>
       <NumberPad
         value={newRecord.amount}
         onChange={amount => handleOnChange({ amount })}

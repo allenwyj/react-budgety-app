@@ -10,14 +10,12 @@ interface Props {
 // In TS,
 // declaring the type of props by <Props> can allow the component
 // to take props from its parent.
-const Tags: React.FC<Props> = ({ value, onChange }: Props) => {
+const Tags: React.FC<Props> = ({ value, onChange }) => {
   const { tags, addTag } = useTags();
 
   const selectedTagIds = value;
-
   // onChange is going to let parent component knows we have updates here.
   const onToggleTag = (tagId: number) => {
-    console.log(tagId);
     const index = selectedTagIds.indexOf(tagId);
     if (index >= 0) {
       onChange(selectedTagIds.filter(t => t !== tagId));
