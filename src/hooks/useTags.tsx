@@ -29,7 +29,7 @@ export const useTags = () => {
   // encasulate a new custom hook to avoid setting empty data into localStorage.
   useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags));
-  }, [tags]);
+  }, tags);
 
   // encapsulate findTag function
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];

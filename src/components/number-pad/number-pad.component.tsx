@@ -42,7 +42,6 @@ const NumberPad: React.FC<Props> = props => {
 
   return (
     <NumberPadSection>
-      {console.log('组件刷新了！！！' + props.value + amount)}
       <div className="output">{amount}</div>
       <div className="pad clearfix" onClick={onClickButtonWrapper}>
         <button>1</button>

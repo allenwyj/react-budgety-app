@@ -19,7 +19,7 @@ const Statistics: React.FC = () => {
   const categorisedRecords = records.filter(rec => rec.category === category);
 
   // putting different records into different key:value based on date.
-  categorisedRecords.map(record => {
+  categorisedRecords.forEach(record => {
     const key = day(record.createdAt).format('DD-MM-YYYY');
     if (!(key in hashRecords)) {
       hashRecords[key] = [];
