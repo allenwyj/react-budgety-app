@@ -8,3 +8,7 @@ export const LayoutContainer = styled(Layout)`
   flex-direction: column;
   border: 3px solid red;
 `;
+
+export const CategoryWrapper = styled.div`
+  background: #c4c4c4;
+`;
