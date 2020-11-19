@@ -47,7 +47,7 @@ const Statistics: React.FC = () => {
           <div>
             {sortedRecords.map(rec => (
               <ItemContainer key={rec.createdAt}>
-                <div className="tags">
+                <div className="tags oneLine">
                   {rec.tagIds
                     .map(tagId => {
                       const tag = findTag(tagId);
@@ -63,7 +63,7 @@ const Statistics: React.FC = () => {
                       [] as ReactNode[]
                     )}
                 </div>
-                {rec.note && <div className="note">{rec.note}</div>}
+                {rec.note && <div className="note oneLine">{rec.note}</div>}
                 <div className="amount">${rec.amount}</div>
               </ItemContainer>
             ))}

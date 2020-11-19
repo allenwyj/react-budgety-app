@@ -29,18 +29,18 @@ const Tags: React.FC<Props> = ({ value, onChange }) => {
 
   return (
     <TagsSectionContainer>
+      <button onClick={addTag}>new tag</button>
       <TagListContainer>
         {tags.map(tag => (
           <li
             key={tag.id}
             onClick={() => onToggleTag(tag.id)}
-            className={getClass(tag.id)}
+            className={`${getClass(tag.id)} oneLine`}
           >
             {tag.name}
           </li>
         ))}
       </TagListContainer>
-      <button onClick={addTag}>new tag</button>
     </TagsSectionContainer>
   );
 };

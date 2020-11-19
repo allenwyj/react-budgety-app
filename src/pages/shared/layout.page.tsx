@@ -13,9 +13,11 @@ const ContentContainer = styled.div`
   overflow: auto;
 `;
 
-type Props = any;
+type Props = {
+  className?: string;
+};
 
-const Layout = (props: Props) => {
+const Layout: React.FC<Props> = props => {
   return (
     <PageContaniner>
       <ContentContainer className={props.className}>

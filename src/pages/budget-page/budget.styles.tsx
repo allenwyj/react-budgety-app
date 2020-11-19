@@ -6,7 +6,6 @@ import Layout from '../shared/layout.page';
 export const LayoutContainer = styled(Layout)`
   display: flex;
   flex-direction: column;
-  border: 3px solid red;
 `;
 
 export const CategoryWrapper = styled.div`

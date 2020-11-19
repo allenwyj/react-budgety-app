@@ -24,5 +24,11 @@ export const CategoriesSection = styled.section`
         left: 0;
       }
     }
+
+    @media screen and (max-height: 570px) {
+      > li {
+        padding: 8px 0px;
+      }
+    }
   }
 `;

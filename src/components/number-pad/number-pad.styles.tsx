@@ -57,5 +57,16 @@ export const NumberPadSection = styled.section`
         background: #a9a9a9;
       }
     }
+
+    // for iphone 5
+    @media screen and (max-height: 570px) {
+      > button {
+        height: 40px;
+
+        &.ok {
+          height: 80px;
+        }
+      }
+    }
   }
 `;

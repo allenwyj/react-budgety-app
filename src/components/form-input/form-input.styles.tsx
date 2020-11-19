@@ -19,4 +19,10 @@ export const LabelContainer = styled.label<Props>`
     background: none;
     border: none;
   }
+
+  @media screen and (max-height: 570px) {
+    > input {
+      height: 40px;
+    }
+  }
 `;

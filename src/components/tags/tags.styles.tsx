@@ -5,17 +5,19 @@ export const TagsSectionContainer = styled.section`
   padding: 12px 16px;
   /* If there is more space, give it to this element */
   flex-grow: 1;
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: flex-start;
+  overflow: auto;
+
   > button {
     background: none;
     border: none;
     padding: 2px 4px;
     border-bottom: 1px solid #333;
     color: #666;
-    margin-top: 8px;
+    margin-bottom: 8px;
   }
 `;
 
@@ -28,6 +30,7 @@ export const TagListContainer = styled.ol`
     padding: 3px 18px;
     font-size: 14px;
     margin: 8px 12px;
+    max-width: 80vw;
 
     &.selected {
       background: #f60;
