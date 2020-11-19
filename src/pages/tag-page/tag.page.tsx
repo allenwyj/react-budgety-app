@@ -43,7 +43,7 @@ const TagPage: React.FC = () => {
 
   // TODO: onChange should be submitted when user clicks a submit button
   return (
-    <Layout>
+    <Layout pageName={'Tag'}>
       <TopBar />
       {tag ? (
         generateContent(tag)

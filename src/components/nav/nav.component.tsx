@@ -7,6 +7,12 @@ const Nav: React.FC = () => (
   <NavContainer>
     <ul>
       <li>
+        <NavLink to="/home" activeClassName="selected">
+          <Icon name="home" />
+          Home
+        </NavLink>
+      </li>
+      <li>
         <NavLink to="/tags" activeClassName="selected">
           <Icon name="tag" />
           Tags

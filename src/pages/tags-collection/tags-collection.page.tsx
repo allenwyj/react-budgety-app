@@ -14,7 +14,7 @@ function TagsCollection() {
   const { tags, addTag } = useTags();
 
   return (
-    <Layout>
+    <Layout pageName={'Tags'}>
       <TagListContainer>
         {tags.map(tag => (
           <li key={tag.id}>

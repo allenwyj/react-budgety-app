@@ -38,7 +38,7 @@ function Budget() {
   };
 
   return (
-    <LayoutContainer>
+    <LayoutContainer pageName={'Budget'}>
       <Tags
         value={newRecord.tagIds}
         onChange={tagIds => handleOnChange({ tagIds })}

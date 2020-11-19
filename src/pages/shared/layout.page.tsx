@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from '../../components/header/header.component';
 import Nav from '../../components/nav/nav.component';
 
 const PageContaniner = styled.div`
@@ -15,11 +16,13 @@ const ContentContainer = styled.div`
 
 type Props = {
   className?: string;
+  pageName: string;
 };
 
 const Layout: React.FC<Props> = props => {
   return (
     <PageContaniner>
+      <Header pageName={props.pageName} />
       <ContentContainer className={props.className}>
         {props.children}
       </ContentContainer>

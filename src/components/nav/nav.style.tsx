@@ -8,7 +8,7 @@ export const NavContainer = styled.nav`
     display: flex;
 
     > li {
-      width: 33.333%;
+      width: 25%;
       text-align: center;
 
       > a {
