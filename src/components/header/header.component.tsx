@@ -3,18 +3,23 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Icon from '../icon/icon.component';
 import { HeaderContainer } from './header.styles';
 
-interface Props {
-  pageName: string;
-}
+const Header: React.FC<RouteComponentProps> = ({ history, match }) => {
+  const goAddPage = () => {
+    history.push(`/budget`);
+  };
 
-const Header: React.FC<Props> = props => {
+  console.log(match.path);
   return (
     <HeaderContainer>
       <Icon name="user" />
       <h5>Allen's Budgety</h5>
-      <p>{props.pageName}</p>
+      {match.path !== '/budget' ? (
+        <Icon name="add" onClick={goAddPage} />
+      ) : (
+        <div />
+      )}
     </HeaderContainer>
   );
 };
 
-export default Header;
+export default withRouter(Header);

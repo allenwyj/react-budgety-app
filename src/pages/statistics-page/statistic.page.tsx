@@ -37,7 +37,7 @@ const Statistics: React.FC = () => {
 
   // TODO: 做笔记，concat，reduce
   return (
-    <Layout pageName={'Stats'}>
+    <Layout>
       <CategoryWrapper>
         <Categories value={category} onChange={value => setCategory(value)} />
       </CategoryWrapper>

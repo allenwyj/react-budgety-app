@@ -19,12 +19,6 @@ const Nav: React.FC = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/budget" activeClassName="selected">
-          <Icon name="dollar" />
-          My Budget
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/statistics" activeClassName="selected">
           <Icon name="chart" />
           Statistics

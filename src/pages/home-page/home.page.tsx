@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   const todayDate = day(new Date()).format('DD MMM YYYY');
 
   return (
-    <Layout pageName="Home">
+    <Layout>
       <HomeLayoutContainer>
         <GreetingBox>Good day~</GreetingBox>
         <DateBox>{todayDate}</DateBox>

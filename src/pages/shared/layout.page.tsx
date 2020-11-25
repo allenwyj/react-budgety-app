@@ -16,13 +16,12 @@ const ContentContainer = styled.div`
 
 type Props = {
   className?: string;
-  pageName: string;
 };
 
 const Layout: React.FC<Props> = props => {
   return (
     <PageContaniner>
-      <Header pageName={props.pageName} />
+      <Header />
       <ContentContainer className={props.className}>
         {props.children}
       </ContentContainer>
