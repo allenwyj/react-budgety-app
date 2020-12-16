@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Button from '../../components/button/button.component';
 import { CenterContainer } from '../../components/center-container/center-container.styles';
 import FormInput from '../../components/form-input/form-input.component';
@@ -18,6 +18,7 @@ const TagPage: React.FC = () => {
   let { id: idString } = useParams<Params>();
   const tag = findTag(parseInt(idString));
 
+  const history = useHistory();
   // generate tag content only when the tag exists
   const generateContent = (tag: { id: number; name: string }) => (
     <div>
@@ -36,7 +37,14 @@ const TagPage: React.FC = () => {
         <SpaceDivider />
         <SpaceDivider />
         <SpaceDivider />
-        <Button onClick={() => deleteTag(tag.id)}>Delete</Button>
+        <Button
+          onClick={() => {
+            deleteTag(tag.id);
+            history.goBack();
+          }}
+        >
+          Delete
+        </Button>
       </CenterContainer>
     </div>
   );
@@ -48,7 +56,7 @@ const TagPage: React.FC = () => {
       {tag ? (
         generateContent(tag)
       ) : (
-        <CenterContainer>These is no this tag</CenterContainer>
+        <CenterContainer>There is no this tag</CenterContainer>
       )}
     </Layout>
   );
