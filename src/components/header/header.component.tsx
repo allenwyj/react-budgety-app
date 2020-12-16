@@ -8,7 +8,6 @@ const Header: React.FC<RouteComponentProps> = ({ history, match }) => {
     history.push(`/budget`);
   };
 
-  console.log(match.path);
   return (
     <HeaderContainer>
       <Icon name="user" />

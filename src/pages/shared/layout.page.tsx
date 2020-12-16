@@ -6,7 +6,8 @@ import Nav from '../../components/nav/nav.component';
 const PageContaniner = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* For browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
 `;
 
 const ContentContainer = styled.div`
