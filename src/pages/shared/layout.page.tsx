@@ -10,7 +10,7 @@ const PageContaniner = styled.div`
   height: calc(var(--vh, 1vh) * 100);
 `;
 
-const ContentContainer = styled.div`
+const Main = styled.div`
   flex-grow: 1;
   overflow: auto;
 `;
@@ -23,9 +23,9 @@ const Layout: React.FC<Props> = props => {
   return (
     <PageContaniner>
       <Header />
-      <ContentContainer className={props.className}>
+      <Main className={props.className}>
         {props.children}
-      </ContentContainer>
+      </Main>
       <Nav />
     </PageContaniner>
   );

@@ -20,7 +20,6 @@ export const useTags = () => {
   useEffect(() => {
     let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
     if (localTags.length === 0) {
-      console.log('hi');
       localTags = DEFAULT_TAGS;
     }
     setTags(localTags);
@@ -50,6 +49,8 @@ export const useTags = () => {
 
     if (newTag !== null && newTag !== '') {
       setTags([...tags, { id: createId(), name: newTag }]);
+    } else {
+      alert(`name can't be empty`);
     }
   };
 

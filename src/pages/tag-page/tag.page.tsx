@@ -17,8 +17,8 @@ const TagPage: React.FC = () => {
   const { findTag, updateTag, deleteTag } = useTags();
   let { id: idString } = useParams<Params>();
   const tag = findTag(parseInt(idString));
-
   const history = useHistory();
+  
   // generate tag content only when the tag exists
   const generateContent = (tag: { id: number; name: string }) => (
     <div>
