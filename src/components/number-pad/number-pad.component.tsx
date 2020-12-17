@@ -51,11 +51,11 @@ const NumberPad: React.FC<Props> = props => {
         <button>4</button>
         <button>5</button>
         <button>6</button>
-        <button>c</button>
+        <button className="ok">OK</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button className="ok">OK</button>
+        <button>c</button>
         <button className="zero">0</button>
         <button>.</button>
       </div>
