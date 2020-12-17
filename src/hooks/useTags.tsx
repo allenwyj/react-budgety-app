@@ -45,12 +45,19 @@ export const useTags = () => {
   };
 
   const addTag = () => {
-    const newTag = window.prompt(`What's your new tag name?`);
+    let newTag = window.prompt(`What's your new tag name?`);
 
-    if (newTag !== null && newTag !== '') {
+    if (newTag === null || newTag === '') {
+      alert(`name can't be empty`);
+      return;
+    }
+    // remove trimming spaces.
+    newTag.trim();
+
+    if (newTag.length <= 15) {
       setTags([...tags, { id: createId(), name: newTag }]);
     } else {
-      alert(`name can't be empty`);
+      alert(`name should be within 15 characters.`);
     }
   };
 

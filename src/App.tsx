@@ -14,6 +14,8 @@ import TagsCollection from './pages/tags-collection/tags-collection.page';
 
 const AppWrapper = styled.div`
   color: #333;
+  max-width: 520px;
+  margin: auto;
 `;
 
 function App() {

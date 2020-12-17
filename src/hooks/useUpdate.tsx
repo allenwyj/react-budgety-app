@@ -8,7 +8,6 @@ export const useUpdate = (fn: () => void, deps: any) => {
 
   useEffect(() => {
     count.current += 1;
-    console.log(count);
   });
 
   useEffect(() => {

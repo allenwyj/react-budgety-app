@@ -11,6 +11,11 @@ export const TagsSectionContainer = styled.section`
   align-items: flex-start;
   overflow: auto;
 
+  // removed scrollbar on tag section.
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   > button {
     background: none;
     border: none;
