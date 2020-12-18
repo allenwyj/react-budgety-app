@@ -5,8 +5,8 @@ export const NumberPadSection = styled.section`
   flex-direction: column;
   > .output {
     background: white;
-    font-size: 36px;
-    line-height: 72px;
+    font-size: 20px;
+    line-height: 48px;
     text-align: right;
     padding: 0 16px;
     /* in-box shadow, top and bottom  */
@@ -23,6 +23,10 @@ export const NumberPadSection = styled.section`
       &.ok {
         height: 192px;
         float: right;
+      }
+      > .icon {
+        height: 24px;
+        width: 24px;
       }
       /* select the n th child */
       // 1

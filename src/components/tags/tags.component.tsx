@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTags } from '../../hooks/useTags';
+import Icon from '../icon/icon.component';
 import { TagListContainer, TagsSectionContainer } from './tags.styles';
 
 interface Props {
   value: number[];
+  category: '-' | '+';
   onChange: (selected: number[]) => void;
 }
 
 // In TS,
 // declaring the type of props by <Props> can allow the component
 // to take props from its parent.
-const Tags: React.FC<Props> = ({ value, onChange }) => {
-  const { tags, addTag } = useTags();
+const Tags: React.FC<Props> = ({ value, category, onChange }) => {
+  const { tags, setCategory, capitalisedFirstLetter } = useTags();
+
+  useEffect(() => {
+    setCategory(category);
+  }, [setCategory, category]);
 
   const selectedTagIds = value;
   // onChange is going to let parent component knows we have updates here.
   const onToggleTag = (tagId: number) => {
-    const index = selectedTagIds.indexOf(tagId);
-    if (index >= 0) {
-      onChange(selectedTagIds.filter(t => t !== tagId));
-    } else {
-      onChange([...selectedTagIds, tagId]);
-    }
+    // Only allows to select one tag
+    onChange([tagId]);
   };
 
   const getClass = (tagId: number) =>
@@ -29,7 +31,6 @@ const Tags: React.FC<Props> = ({ value, onChange }) => {
 
   return (
     <TagsSectionContainer>
-      <button onClick={addTag}>new tag</button>
       <TagListContainer>
         {tags.map(tag => (
           <li
@@ -37,7 +38,8 @@ const Tags: React.FC<Props> = ({ value, onChange }) => {
             onClick={() => onToggleTag(tag.id)}
             className={`${getClass(tag.id)} oneLine`}
           >
-            {tag.name}
+            <Icon name={tag.name} />
+            {capitalisedFirstLetter(tag.name)}
           </li>
         ))}
       </TagListContainer>

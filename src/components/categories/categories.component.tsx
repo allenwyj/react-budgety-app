@@ -15,7 +15,7 @@ const Categories: React.FC<Props> = props => {
   const [categoryList] = useState<Keys[]>(['-', '+']);
   const category = props.value;
   const setCategory = props.onChange;
-  
+
   return (
     <CategoriesSection>
       <ul>

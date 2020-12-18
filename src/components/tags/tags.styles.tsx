@@ -16,29 +16,46 @@ export const TagsSectionContainer = styled.section`
     display: none;
   }
 
-  > button {
+  /* > button {
     background: none;
     border: none;
     padding: 2px 4px;
     border-bottom: 1px solid #333;
     color: #666;
     margin-bottom: 8px;
-  }
+  } */
 `;
 
 export const TagListContainer = styled.ol`
-  margin: 0 -12px;
+  //margin: 0 -12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 0;
+
   > li {
-    background: #d9d9d9;
-    border-radius: 18px;
-    display: inline-block;
-    padding: 3px 18px;
-    font-size: 14px;
-    margin: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 16px;
+    font-size: 10px;
+    margin: 8px 10px;
     max-width: 80vw;
 
+    > .icon {
+      height: 24px;
+      width: 24px;
+      margin: 4px 0;
+    }
     &.selected {
-      background: #f60;
+      color: #f60;
+      .icon {
+        fill: #f60;
+      }
     }
   }
 `;

@@ -13,7 +13,7 @@ import day from 'dayjs';
 const Statistics: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const { records } = useRecords();
-  const { findTag } = useTags();
+  const { findTag, capitalisedFirstLetter } = useTags();
 
   const hashRecords: { [K: string]: NewRecordItem[] } = {};
   const categorisedRecords = records.filter(rec => rec.category === category);
@@ -51,7 +51,9 @@ const Statistics: React.FC = () => {
                   {rec.tagIds
                     .map(tagId => {
                       const tag = findTag(tagId);
-                      const tagName = tag ? tag.name : '';
+                      const tagName = tag
+                        ? capitalisedFirstLetter(tag.name)
+                        : '';
                       return <span key={tagId}>{tagName}</span>;
                     })
                     .reduce(

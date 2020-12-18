@@ -32,7 +32,7 @@ export const useRecords = () => {
       return false;
     }
     if (newRecord.tagIds.length === 0) {
-      alert('Please select at least one tag for your record!');
+      alert('Please select a tag for your record!');
       return false;
     }
     const record = { ...newRecord, createdAt: new Date().toISOString() };

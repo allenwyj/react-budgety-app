@@ -19,7 +19,6 @@ const DEFAULT_RECORD = {
 
 function Budget() {
   const [newRecord, setNewRecord] = useState(DEFAULT_RECORD);
-
   const { addRecord } = useRecords();
   // Partial: only needs to match part of types
   const handleOnChange = (obj: Partial<typeof newRecord>) =>
@@ -41,6 +40,7 @@ function Budget() {
     <LayoutContainer className={'Budget'}>
       <Tags
         value={newRecord.tagIds}
+        category={newRecord.category}
         onChange={tagIds => handleOnChange({ tagIds })}
       />
       <Note

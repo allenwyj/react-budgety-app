@@ -9,5 +9,5 @@ export const LayoutContainer = styled(Layout)`
 `;
 
 export const CategoryWrapper = styled.div`
-  background: #c4c4c4;
+  background: #e8e8e8;
 `;

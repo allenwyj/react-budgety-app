@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../icon/icon.component';
 import { NumberPadSection } from './number-pad.styles';
 import { generateOutput, InputString } from './number-pad.utils';
 
@@ -25,7 +26,12 @@ const NumberPad: React.FC<Props> = props => {
   };
 
   const onClickButtonWrapper = (e: React.MouseEvent) => {
-    const text = (e.target as HTMLButtonElement).textContent;
+    const element = e.target as HTMLButtonElement;
+    let text = element.textContent;
+    if (element.matches('.delete__button, .delete__button *')) {
+      text = 'Delete';
+    }
+
     if (text === null) return;
 
     if (text === 'OK') {
@@ -42,12 +48,14 @@ const NumberPad: React.FC<Props> = props => {
 
   return (
     <NumberPadSection>
-      <div className="output">{amount}</div>
+      <div className="output">$ {amount}</div>
       <div className="pad clearfix" onClick={onClickButtonWrapper}>
         <button>1</button>
         <button>2</button>
         <button>3</button>
-        <button>Delete</button>
+        <button className="delete__button">
+          <Icon name={'backspace'} />
+        </button>
         <button>4</button>
         <button>5</button>
         <button>6</button>
