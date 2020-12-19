@@ -26,8 +26,9 @@ const Tags: React.FC<Props> = ({ value, category, onChange }) => {
     onChange([tagId]);
   };
 
+  const catgoryColor = category === '+' ? 'selectedInc' : 'selectedExp';
   const getClass = (tagId: number) =>
-    selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
+    selectedTagIds.indexOf(tagId) >= 0 ? catgoryColor : '';
 
   return (
     <TagsSectionContainer>

@@ -1,19 +1,19 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import Categories from '../../components/categories/categories.component';
 import { NewRecordItem, useRecords } from '../../hooks/useRecords';
-import { useTags } from '../../hooks/useTags';
 import Layout from '../shared/layout.page';
 import {
   CategoryWrapper,
   DateContainer,
-  ItemContainer
+  DateTitleContainer
 } from './statistics.styles';
 import day from 'dayjs';
+import RecordItem from '../../components/record-item/record-item.component';
+import BudgetTile from '../../components/budget-tile/budget-tile.component';
 
 const Statistics: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const { records } = useRecords();
-  const { findTag, capitalisedFirstLetter } = useTags();
 
   const hashRecords: { [K: string]: NewRecordItem[] } = {};
   const categorisedRecords = records.filter(rec => rec.category === category);
@@ -35,39 +35,36 @@ const Statistics: React.FC = () => {
     return 0;
   });
 
+  const today = day(new Date().toISOString()).format('DD-MM-YYYY');
+  // if the latest record exists and its date is today, then rename it.
+  sortedArray[0] &&
+    sortedArray[0][0] &&
+    sortedArray[0][0] === today &&
+    (sortedArray[0][0] = 'Today');
+
   // TODO: 做笔记，concat，reduce
   return (
     <Layout>
+      <BudgetTile />
       <CategoryWrapper>
         <Categories value={category} onChange={value => setCategory(value)} />
       </CategoryWrapper>
       {sortedArray.map(([date, sortedRecords]) => (
         <div key={date}>
-          <DateContainer>{date}</DateContainer>
+          <DateTitleContainer>
+            <DateContainer>{date}</DateContainer>
+            <p>
+              <span>$ {category}</span>
+              {sortedRecords.reduce(
+                (accumulator, currentRecord) =>
+                  accumulator + currentRecord.amount,
+                0
+              )}
+            </p>
+          </DateTitleContainer>
           <div>
             {sortedRecords.map(rec => (
-              <ItemContainer key={rec.createdAt}>
-                <div className="tags oneLine">
-                  {rec.tagIds
-                    .map(tagId => {
-                      const tag = findTag(tagId);
-                      const tagName = tag
-                        ? capitalisedFirstLetter(tag.name)
-                        : '';
-                      return <span key={tagId}>{tagName}</span>;
-                    })
-                    .reduce(
-                      // if currVal is not the last one, append with comma
-                      (result, span, index, arr) =>
-                        result.concat(
-                          index < arr.length - 1 ? [span, ','] : [span]
-                        ),
-                      [] as ReactNode[]
-                    )}
-                </div>
-                {rec.note && <div className="note oneLine">{rec.note}</div>}
-                <div className="amount">${rec.amount}</div>
-              </ItemContainer>
+              <RecordItem key={rec.createdAt} rec={rec} />
             ))}
           </div>
         </div>

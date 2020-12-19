@@ -8,7 +8,6 @@ const PageContaniner = styled.div`
   flex-direction: column;
   height: 100vh; /* For browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  background: linen;
 `;
 
 const Main = styled.div`

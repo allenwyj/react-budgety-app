@@ -18,7 +18,9 @@ export const useRecords = () => {
   const [records, setRecords] = useState<NewRecordItem[]>([]);
 
   useEffect(() => {
-    const tempRecords = JSON.parse(window.localStorage.getItem('records') || '[]');
+    const tempRecords = JSON.parse(
+      window.localStorage.getItem('records') || '[]'
+    );
     setRecords(tempRecords);
   }, []);
 

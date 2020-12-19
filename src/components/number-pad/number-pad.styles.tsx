@@ -72,7 +72,7 @@ export const NumberPadSection = styled.section`
         height: 40px;
 
         &.ok {
-          height: 80px;
+          height: 120px;
         }
       }
     }

@@ -1,30 +1,21 @@
 import styled from 'styled-components';
 
 export const CategoryWrapper = styled.div`
-  background: white;
+  //background: white;
 `;
 
-export const ItemContainer = styled.div`
+export const DateTitleContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  font-size: 16px;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  font-size: 16px;
+  padding: 8px 16px;
   line-height: 20px;
-  padding: 12px 16px;
-
-  > .note {
-    font-size: 14px;
-    // align left
-    margin-right: auto;
-    margin-left: 16px;
-    color: #999;
+  > p {
+    color: #949393
   }
 `;
 
 export const DateContainer = styled.h3`
-  font-size: 14px;
-  line-height: 20px;
-  padding: 10px 16px;
+  font-size: inherit;
 `;

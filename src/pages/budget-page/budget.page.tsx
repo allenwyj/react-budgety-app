@@ -11,7 +11,7 @@ import { useRecords } from '../../hooks/useRecords';
 type Category = '-' | '+';
 
 const DEFAULT_RECORD = {
-  tagIds: [] as number[],
+  tagIds: [999] as number[],
   note: '',
   category: '-' as Category,
   amount: 0
@@ -27,12 +27,7 @@ function Budget() {
   const saveNewRecord = () => {
     if (addRecord(newRecord)) {
       // reset all fields
-      setNewRecord({
-        tagIds: [],
-        note: '',
-        category: '-',
-        amount: 0
-      });
+      setNewRecord(DEFAULT_RECORD);
     }
   };
 
@@ -52,7 +47,7 @@ function Budget() {
       <CategoryWrapper>
         <Categories
           value={newRecord.category}
-          onChange={category => handleOnChange({ category })}
+          onChange={category => handleOnChange({ category, tagIds: [999] })}
         />
       </CategoryWrapper>
       <NumberPad

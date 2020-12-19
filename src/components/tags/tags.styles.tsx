@@ -51,10 +51,17 @@ export const TagListContainer = styled.ol`
       width: 24px;
       margin: 4px 0;
     }
-    &.selected {
+    &.selectedExp {
       color: #f60;
       .icon {
         fill: #f60;
+      }
+    }
+
+    &.selectedInc {
+      color: #5fa0fa;
+      .icon {
+        fill: #5fa0fa;
       }
     }
   }

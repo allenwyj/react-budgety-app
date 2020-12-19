@@ -34,7 +34,7 @@ const DEFAULT_EXPENSE_TAGS: DefaultTags[] = [
   { id: 15, name: 'bills' },
   { id: 16, name: 'health' },
   { id: 17, name: 'education' },
-  { id: 18, name: 'others' }
+  { id: 999, name: 'others' }
 ];
 
 const DEFAULT_INCOME_TAGS: DefaultTags[] = [
@@ -42,7 +42,7 @@ const DEFAULT_INCOME_TAGS: DefaultTags[] = [
   { id: 102, name: 'part-time' },
   { id: 103, name: 'bonus' },
   { id: 104, name: 'investment' },
-  { id: 105, name: 'others' }
+  { id: 999, name: 'others' }
 ];
 
 // encapsulate a custom react hook function
