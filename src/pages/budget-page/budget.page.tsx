@@ -7,11 +7,14 @@ import NumberPad from '../../components/number-pad/number-pad.component';
 
 import { CategoryWrapper, LayoutContainer } from './budget.styles';
 import { useRecords } from '../../hooks/useRecords';
+import CreatedDate from '../../components/created-date/created-date.component';
+import { convertDateToString } from './budget.utils';
 
 type Category = '-' | '+';
 
 const DEFAULT_RECORD = {
   tagIds: [999] as number[],
+  createdAt: convertDateToString(new Date().toISOString()), // default: the current time
   note: '',
   category: '-' as Category,
   amount: 0
@@ -20,6 +23,7 @@ const DEFAULT_RECORD = {
 function Budget() {
   const [newRecord, setNewRecord] = useState(DEFAULT_RECORD);
   const { addRecord } = useRecords();
+
   // Partial: only needs to match part of types
   const handleOnChange = (obj: Partial<typeof newRecord>) =>
     setNewRecord({ ...newRecord, ...obj });
@@ -37,6 +41,10 @@ function Budget() {
         value={newRecord.tagIds}
         category={newRecord.category}
         onChange={tagIds => handleOnChange({ tagIds })}
+      />
+      <CreatedDate
+        value={newRecord.createdAt}
+        onChange={createdAt => handleOnChange({ createdAt })}
       />
       <Note
         value={newRecord.note}

@@ -9,7 +9,6 @@ export type NewRecordItem = {
   amount: number;
   createdAt: string;
 };
-type MyNewRecord = Omit<NewRecordItem, 'createdAt'>;
 
 // type MyNewRecord = NewRecordItem & {
 //   createdAt: string; // ISO 8601
@@ -27,7 +26,6 @@ export const useRecords = () => {
     setRecords(tempRecords);
     console.log(records);
   }, []);
-
 
   useUpdate(() => {
     window.localStorage.setItem('records', JSON.stringify(records));
@@ -54,7 +52,7 @@ export const useRecords = () => {
     return totalAmount;
   };
 
-  const addRecord = (newRecord: MyNewRecord) => {
+  const addRecord = (newRecord: NewRecordItem) => {
     if (newRecord.amount <= 0) {
       alert('Sorry, amount should be greater than 0!');
       return false;
@@ -63,8 +61,8 @@ export const useRecords = () => {
       alert('Please select a tag for your record!');
       return false;
     }
-    const record = { ...newRecord, createdAt: new Date().toISOString() };
-    setRecords([...records, record]);
+    
+    setRecords([...records, newRecord]);
     alert('Saved!');
     return true;
   };
