@@ -24,6 +24,12 @@ const Nav: React.FC = () => (
           Statistics
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/overview" activeClassName="selected">
+          <Icon name="chart" />
+          Overview
+        </NavLink>
+      </li>
     </ul>
   </NavContainer>
 );
