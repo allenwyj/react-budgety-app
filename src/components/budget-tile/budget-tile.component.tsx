@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRecords } from '../../hooks/useRecords';
-import day from 'dayjs';
 import {
   BudgetTileContainer,
   ExpenseNumberContainer,
@@ -10,21 +9,8 @@ import {
 import { useBudget } from '../../hooks/useBudget';
 
 const BudgetTile: React.FC = () => {
-  const { records } = useRecords();
+  const { totalIncome, totalExpense } = useRecords();
   const { budget, addBudget } = useBudget();
-  const thisMonth = day(new Date().toISOString()).format('YYYY-MM');
-
-  const calSameMonthCategoryTotalAmount = (cat: '-' | '+') => {
-    const categorisedRecords = records.filter(
-      rec =>
-        rec.category === cat && day(thisMonth).isSame(rec.createdAt, 'month')
-    );
-    const totalAmount = categorisedRecords.reduce(
-      (accumulator, currentVal) => accumulator + currentVal.amount,
-      0
-    );
-    return totalAmount;
-  };
 
   const onUserClick = () => {
     const userInput = window.prompt('Enter your budget for this month.');
@@ -34,9 +20,6 @@ const BudgetTile: React.FC = () => {
     }
     addBudget(userInput);
   };
-
-  const totalIncome = calSameMonthCategoryTotalAmount('+');
-  const totalExpense = calSameMonthCategoryTotalAmount('-');
 
   return (
     <BudgetTileContainer>

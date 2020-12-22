@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useUpdate } from './useUpdate';
+import day from 'dayjs';
 
 export type NewRecordItem = {
   tagIds: number[];
@@ -16,17 +17,42 @@ type MyNewRecord = Omit<NewRecordItem, 'createdAt'>;
 
 export const useRecords = () => {
   const [records, setRecords] = useState<NewRecordItem[]>([]);
+  const [totalIncome, setTotalIncome] = useState<number>(0);
+  const [totalExpense, setTotalExpense] = useState<number>(0);
 
   useEffect(() => {
     const tempRecords = JSON.parse(
       window.localStorage.getItem('records') || '[]'
     );
     setRecords(tempRecords);
+    console.log(records);
   }, []);
+
 
   useUpdate(() => {
     window.localStorage.setItem('records', JSON.stringify(records));
+    const tempIncome = calSameMonthCategoryTotalAmount('+');
+    const tempExpense = calSameMonthCategoryTotalAmount('-');
+    setTotalIncome(tempIncome);
+    setTotalExpense(tempExpense);
+    console.log(totalExpense);
+    console.log(totalIncome);
+    console.log('set');
   }, records);
+
+  const thisMonth = day(new Date().toISOString()).format('YYYY-MM');
+
+  const calSameMonthCategoryTotalAmount = (cat: '-' | '+') => {
+    const categorisedRecords = records.filter(
+      rec =>
+        rec.category === cat && day(thisMonth).isSame(rec.createdAt, 'month')
+    );
+    const totalAmount = categorisedRecords.reduce(
+      (accumulator, currentVal) => accumulator + currentVal.amount,
+      0
+    );
+    return totalAmount;
+  };
 
   const addRecord = (newRecord: MyNewRecord) => {
     if (newRecord.amount <= 0) {
@@ -43,5 +69,5 @@ export const useRecords = () => {
     return true;
   };
 
-  return { records, addRecord };
+  return { records, totalIncome, totalExpense, addRecord };
 };
