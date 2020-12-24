@@ -13,7 +13,7 @@ export const LabelContainer = styled.label<Props>`
     white-space: nowrap;
   }
   > input {
-    display: block;
+    //display: block;
     width: 100%;
     height: ${({ isHigher }) => (isHigher ? '72px' : '44px')};
     background: none;

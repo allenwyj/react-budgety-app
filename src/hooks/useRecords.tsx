@@ -16,6 +16,7 @@ export type NewRecordItem = {
 
 export const useRecords = () => {
   const [records, setRecords] = useState<NewRecordItem[]>([]);
+  // TODO: useRef for totalIncome and totalExpense
   const [totalIncome, setTotalIncome] = useState<number>(0);
   const [totalExpense, setTotalExpense] = useState<number>(0);
 

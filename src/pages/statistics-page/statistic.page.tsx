@@ -20,7 +20,7 @@ const Statistics: React.FC = () => {
 
   // putting different records into different key:value based on date.
   categorisedRecords.forEach(record => {
-    const key = day(record.createdAt).format('DD-MM-YYYY');
+    const key = day(record.createdAt).format('DD/MM/YYYY');
     if (!(key in hashRecords)) {
       hashRecords[key] = [];
     }
@@ -35,14 +35,14 @@ const Statistics: React.FC = () => {
     return 0;
   });
 
-  const today = day(new Date().toISOString()).format('DD-MM-YYYY');
+  const today = day(new Date().toISOString()).format('DD/MM/YYYY');
   // if the latest record exists and its date is today, then rename it.
   sortedArray[0] &&
     sortedArray[0][0] &&
     sortedArray[0][0] === today &&
     (sortedArray[0][0] = 'Today');
 
-  // TODO: 做笔记，concat，reduce
+  // TODO: RecordItem has the same key
   return (
     <Layout>
       <BudgetTile />

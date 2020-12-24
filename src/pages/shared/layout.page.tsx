@@ -23,9 +23,7 @@ const Layout: React.FC<Props> = props => {
   return (
     <PageContaniner>
       <Header />
-      <Main className={props.className}>
-        {props.children}
-      </Main>
+      <Main className={props.className}>{props.children}</Main>
       <Nav />
     </PageContaniner>
   );
