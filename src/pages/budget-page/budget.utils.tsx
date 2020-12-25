@@ -1,5 +1,5 @@
 import day from 'dayjs';
 
-export const convertDateToString = (isoString: string) => {
-  return day(isoString).format('YYYY-MM-DDTHH:mm');
+export const convertDateToString = (currentTime: Date) => {
+  return day(currentTime).format('YYYY-MM-DDTHH:mm');
 };

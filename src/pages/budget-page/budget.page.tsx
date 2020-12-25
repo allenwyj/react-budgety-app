@@ -14,7 +14,7 @@ type Category = '-' | '+';
 
 const DEFAULT_RECORD = {
   tagIds: [999] as number[],
-  createdAt: convertDateToString(new Date().toISOString()), // default: the current time
+  createdAt: convertDateToString(new Date()), // default: the current time
   note: '',
   category: '-' as Category,
   amount: 0

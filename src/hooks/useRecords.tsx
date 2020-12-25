@@ -10,10 +10,6 @@ export type NewRecordItem = {
   createdAt: string;
 };
 
-// type MyNewRecord = NewRecordItem & {
-//   createdAt: string; // ISO 8601
-// };
-
 export const useRecords = () => {
   const [records, setRecords] = useState<NewRecordItem[]>([]);
   // TODO: useRef for totalIncome and totalExpense
@@ -25,7 +21,7 @@ export const useRecords = () => {
       window.localStorage.getItem('records') || '[]'
     );
     setRecords(tempRecords);
-    console.log(records);
+    console.log('mounted');
   }, []);
 
   useUpdate(() => {
@@ -34,12 +30,10 @@ export const useRecords = () => {
     const tempExpense = calSameMonthCategoryTotalAmount('-');
     setTotalIncome(tempIncome);
     setTotalExpense(tempExpense);
-    console.log(totalExpense);
-    console.log(totalIncome);
     console.log('set');
   }, records);
 
-  const thisMonth = day(new Date().toISOString()).format('YYYY-MM');
+  const thisMonth = day(new Date()).format('YYYY-MM');
 
   const calSameMonthCategoryTotalAmount = (cat: '-' | '+') => {
     const categorisedRecords = records.filter(
@@ -62,7 +56,7 @@ export const useRecords = () => {
       alert('Please select a tag for your record!');
       return false;
     }
-    
+
     setRecords([...records, newRecord]);
     alert('Saved!');
     return true;

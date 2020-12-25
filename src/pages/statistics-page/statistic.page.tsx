@@ -35,7 +35,7 @@ const Statistics: React.FC = () => {
     return 0;
   });
 
-  const today = day(new Date().toISOString()).format('DD/MM/YYYY');
+  const today = day(new Date()).format('DD/MM/YYYY');
   // if the latest record exists and its date is today, then rename it.
   sortedArray[0] &&
     sortedArray[0][0] &&
