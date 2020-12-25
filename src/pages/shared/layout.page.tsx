@@ -13,6 +13,10 @@ const PageContaniner = styled.div`
 const Main = styled.div`
   flex-grow: 1;
   overflow: auto;
+
+  > .chart-wrapper {
+    overflow: auto;
+  }
 `;
 
 type Props = {

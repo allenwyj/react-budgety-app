@@ -1,5 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import * as echarts from 'echarts';
+import styled from 'styled-components';
+
+export const EchartsContainer = styled.div`
+  //max-width: 100%;
+  height: 40vh;
+  width: 430%;
+`;
 
 interface Props {
   // TODO: BUG: the newest version has problem
@@ -13,18 +20,18 @@ const Chart: React.FC<Props> = props => {
   const { options } = props;
 
   useEffect(() => {
-    const width = document.documentElement.clientWidth;
+    // const width = document.documentElement.clientWidth;
     console.log(options);
     if (container.current) {
       // set the height and widht for echart
-      container.current.style.width = `${width - 20}px`;
-      container.current.style.height = `${(width - 20) * 1.2}px`;
-      chart.current = echarts.init(container.current, 'dark');
+      // container.current.style.width = `${width - 20}px`;
+      // container.current.style.height = `${(width - 20) * 1.2}px`;
+      chart.current = echarts.init(container.current);
     } else console.warn('Error!');
     chart.current.setOption(options);
   }, []);
 
-  return <div ref={container} />;
+  return <EchartsContainer ref={container} />;
 };
 
 export default Chart;

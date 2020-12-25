@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Chart from '../../components/chart/chart.component';
 import Layout from '../shared/layout.page';
-
 import 'echarts/lib/chart/line';
 
 const OverviewPage: React.FC = () => {
+  const chartWrapper = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Loading the line chart to the latest dates
+    const div = chartWrapper.current as HTMLDivElement;
+    div.scrollLeft = div.scrollWidth;
+  }, []);
+
+  // grid removes the white spaces around the chart
   const options = {
+    grid: {
+      left: 0,
+      right: 0
+    },
     xAxis: {
       type: 'category',
+      axisTick: {
+        alignWithLabel: true
+      },
       data: [
         '1',
         '2',
@@ -43,13 +58,20 @@ const OverviewPage: React.FC = () => {
       ]
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      show: false
     },
     tooltip: {
-      show: true
+      show: true,
+      triggerOn: 'click',
+      position: 'top',
+      formatter: '${c}'
     },
     series: [
       {
+        symbol: 'circle',
+        symbolSize: 10,
+        itemStyle: { color: '#f60' },
         data: [
           120,
           200,
@@ -95,7 +117,9 @@ const OverviewPage: React.FC = () => {
   return (
     <Layout>
       <h1>Overview Page</h1>
-      <Chart options={options} />
+      <div className={'chart-wrapper'} ref={chartWrapper}>
+        <Chart options={options} />
+      </div>
     </Layout>
   );
 };
