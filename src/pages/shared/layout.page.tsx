@@ -13,10 +13,21 @@ const PageContaniner = styled.div`
 const Main = styled.div`
   flex-grow: 1;
   overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   > .chart-wrapper {
     overflow: auto;
     background: white;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // show 7 days for recent chart.
+    > div {
+      width: 430%;
+    }
   }
 `;
 

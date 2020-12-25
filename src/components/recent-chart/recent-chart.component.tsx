@@ -1,10 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
-import Chart from '../../components/chart/chart.component';
-import Layout from '../../pages/shared/layout.page';
+import React, { useRef, useEffect } from 'react';
+import Chart from '../chart/chart.component';
 import 'echarts/lib/chart/bar';
 import _ from 'lodash';
 import day from 'dayjs';
-import { loadOptions } from '../../pages/overview-page/overview-echarts.options';
+import { loadOptions } from './recent-chart.options';
 
 type Props = {
   category: '-' | '+';
