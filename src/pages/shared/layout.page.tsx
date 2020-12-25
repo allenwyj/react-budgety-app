@@ -16,6 +16,7 @@ const Main = styled.div`
 
   > .chart-wrapper {
     overflow: auto;
+    background: white;
   }
 `;
 

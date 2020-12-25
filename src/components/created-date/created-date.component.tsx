@@ -15,6 +15,7 @@ const CreatedDate: React.FC<Props> = props => {
     props.onChange(e.target.value);
   };
 
+  // datetime-local returns date in string - 'YYYY-MM-DDTHH:mm'
   return (
     <CreatedDateSection>
       <FormInput

@@ -21,7 +21,6 @@ const Chart: React.FC<Props> = props => {
 
   useEffect(() => {
     // const width = document.documentElement.clientWidth;
-    console.log(options);
     if (container.current) {
       // set the height and widht for echart
       // container.current.style.width = `${width - 20}px`;
@@ -30,6 +29,11 @@ const Chart: React.FC<Props> = props => {
     } else console.warn('Error!');
     chart.current.setOption(options);
   }, []);
+
+  useEffect(() => {
+    chart.current.setOption(options);
+    console.log('re-render');
+  }, [options]);
 
   return <EchartsContainer ref={container} />;
 };
