@@ -17,7 +17,7 @@ const Categories: React.FC<Props> = props => {
   const setCategory = props.onChange;
 
   return (
-    <CategoriesSection>
+    <CategoriesSection category={category}>
       <ul>
         {categoryList.map(el => (
           <li

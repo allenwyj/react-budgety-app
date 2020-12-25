@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Props {
+  category: '+' | '-';
+}
+
 export const CategoriesSection = styled.section`
   font-size: 18px;
   > ul {
@@ -19,7 +23,8 @@ export const CategoriesSection = styled.section`
         content: '';
         display: block;
         height: 3px;
-        background: #f60;
+        background: ${(props: Props) =>
+          props.category === '-' ? '#f60' : '#6da0f3'};
         position: absolute;
         bottom: 0;
         width: 100%;
