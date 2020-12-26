@@ -1,49 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useUpdate } from './useUpdate';
 import { createId } from '../lib/createId';
-
-type DefaultTags = { id: number; name: string };
-
-// const DEFAULT_EXPENSE_TAGS: DefaultTags[] = [
-//   { id: createId(), name: 'Shopping' },
-//   { id: createId(), name: 'Food' },
-//   { id: createId(), name: 'Accomodation' },
-//   { id: createId(), name: 'Transport' }
-// ];
-
-// const DEFAULT_INCOME_TAGS: DefaultTags[] = [
-//   { id: createId(), name: 'Salary' },
-//   { id: createId(), name: 'Bank' }
-// ];
-
-const DEFAULT_EXPENSE_TAGS: DefaultTags[] = [
-  { id: 1, name: 'food' },
-  { id: 2, name: 'drinks' },
-  { id: 3, name: 'fruits' },
-  { id: 4, name: 'snacks' },
-  { id: 5, name: 'dining' },
-  { id: 6, name: 'clothing' },
-  { id: 7, name: 'shopping' },
-  { id: 8, name: 'house' },
-  { id: 9, name: 'transport' },
-  { id: 10, name: 'entertainment' },
-  { id: 11, name: 'pet' },
-  { id: 12, name: 'recharge' },
-  { id: 13, name: 'travel' },
-  { id: 14, name: 'car' },
-  { id: 15, name: 'bills' },
-  { id: 16, name: 'health' },
-  { id: 17, name: 'education' },
-  { id: 999, name: 'others' }
-];
-
-const DEFAULT_INCOME_TAGS: DefaultTags[] = [
-  { id: 101, name: 'salary' },
-  { id: 102, name: 'part-time' },
-  { id: 103, name: 'bonus' },
-  { id: 104, name: 'investment' },
-  { id: 999, name: 'others' }
-];
+import { DEFAULT_EXPENSE_TAGS, DEFAULT_INCOME_TAGS } from '../data/tags-name';
 
 // encapsulate a custom react hook function
 export const useTags = () => {
