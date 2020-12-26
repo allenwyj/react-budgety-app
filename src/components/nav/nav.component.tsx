@@ -7,12 +7,6 @@ const Nav: React.FC = () => (
   <NavContainer>
     <ul>
       <li>
-        <NavLink to="/tags" activeClassName="selected">
-          <Icon name="tag" />
-          Tags
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/budget" activeClassName="selected">
           <Icon name="dollar" />
           Budget

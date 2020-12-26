@@ -13,7 +13,6 @@ const OverviewPage: React.FC = () => {
 
   return (
     <Layout>
-      <h1>Overview Page</h1>
       <CategoryWrapper>
         <Categories value={category} onChange={value => setCategory(value)} />
       </CategoryWrapper>

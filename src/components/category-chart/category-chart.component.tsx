@@ -8,6 +8,7 @@ import {
   DEFAULT_EXPENSE_TAGS,
   DEFAULT_INCOME_TAGS
 } from '../../data/tags-name';
+import { CategoryChartContainer } from './category-chart.styles';
 
 type Props = {
   category: '-' | '+';
@@ -25,7 +26,6 @@ const CategoryChart: React.FC<Props> = props => {
         rec.category === category &&
         day(thisMonth).isSame(rec.createdAt, 'month')
     );
-    console.log(categorisedRecords);
     const hashRecords: { [K: string]: number[] } = {};
     categorisedRecords.forEach((record: NewRecordItem) => {
       const key = record.tagIds[0];
@@ -66,8 +66,8 @@ const CategoryChart: React.FC<Props> = props => {
     series: [
       {
         type: 'pie',
-        radius: '55%',
-        center: ['50%', '60%'],
+        radius: '70%',
+        center: ['50%', '50%'],
         data: getRecordsByTag(),
         emphasis: {
           itemStyle: {
@@ -80,7 +80,14 @@ const CategoryChart: React.FC<Props> = props => {
     ]
   };
 
-  return <Chart options={options} />;
+  return (
+    <CategoryChartContainer>
+      <p>Monthly Overview - {day(new Date()).format('MM/YYYY')}</p>
+      <div className={'category-chart-wrapper'}>
+        <Chart options={options} />
+      </div>
+    </CategoryChartContainer>
+  );
 };
 
 export default CategoryChart;

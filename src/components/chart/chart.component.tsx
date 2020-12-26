@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 import styled from 'styled-components';
 
 export const EchartsContainer = styled.div`
-  height: 40vh;
+  height: 250px;
 `;
 
 interface Props {

@@ -6,8 +6,11 @@ export const loadOptions = (
   // grid removes the white spaces around the chart
   return {
     grid: {
+      top: '10%',
       left: 0,
-      right: 0
+      right: 0,
+      bottom: '3%',
+      containLabel: true
     },
     xAxis: {
       type: 'category',

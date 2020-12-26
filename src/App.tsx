@@ -10,8 +10,6 @@ import NoMatch from './pages/404-page/no-match.page';
 import Budget from './pages/budget-page/budget.page';
 import OverviewPage from './pages/overview-page/overview.page';
 import Statistics from './pages/statistics-page/statistic.page';
-import TagPage from './pages/tag-page/tag.page';
-import TagsCollection from './pages/tags-collection/tags-collection.page';
 
 const AppWrapper = styled.div`
   color: #333;
@@ -25,8 +23,6 @@ function App() {
       <Router>
         <Switch>
           <Redirect exact from="/" to="/budget" />
-          <Route exact path="/tags" component={TagsCollection} />
-          <Route exact path="/tags/:id" component={TagPage} />
           <Route exact path="/budget" component={Budget} />
           <Route exact path="/statistics" component={Statistics} />
           <Route exact path="/overview" component={OverviewPage} />

@@ -4,6 +4,7 @@ import 'echarts/lib/chart/bar';
 import _ from 'lodash';
 import day from 'dayjs';
 import { loadOptions } from './recent-chart.options';
+import { NoteTextContainer, RecentChartContainer } from './recent-chart.styles';
 
 type Props = {
   category: '-' | '+';
@@ -12,6 +13,7 @@ type Props = {
 
 const RecentChart: React.FC<Props> = props => {
   const { records, category } = props;
+  // get the parent element of chart
   const chartWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,9 +64,15 @@ const RecentChart: React.FC<Props> = props => {
   };
 
   return (
-    <div className={'chart-wrapper'} ref={chartWrapper}>
-      <Chart options={getOptions()} />
-    </div>
+    <RecentChartContainer>
+      <p>Daily Overviews (in last 30 days)</p>
+      <div className={'chart-wrapper'} ref={chartWrapper}>
+        <Chart options={getOptions()} />
+      </div>
+      <NoteTextContainer>
+        * Scroll left or right to view more days.
+      </NoteTextContainer>
+    </RecentChartContainer>
   );
 };
 

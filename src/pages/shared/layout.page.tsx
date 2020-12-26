@@ -16,19 +16,6 @@ const Main = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
-  > .chart-wrapper {
-    overflow: auto;
-    background: white;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    // show 7 days for recent chart.
-    > div {
-      width: 430%;
-    }
-  }
 `;
 
 type Props = {
