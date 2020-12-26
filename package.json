@@ -1,7 +1,7 @@
 {
   "name": "react-book-keeping",
   "version": "0.1.0",
-  "homepage": "https://allenwyj.github.io/react-budgety-app-website/",
+  "homepage": "https://allenwyj.github.io/react-budgety-app-website-modify/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
