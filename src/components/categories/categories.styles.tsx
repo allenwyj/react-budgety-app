@@ -32,7 +32,7 @@ export const CategoriesSection = styled.section`
       }
     }
 
-    @media screen and (max-height: 570px) {
+    @media screen and (max-height: 670px) {
       > li {
         padding: 8px 0px;
         margin: 0 8px;

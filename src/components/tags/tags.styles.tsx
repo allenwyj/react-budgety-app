@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const TagsSectionContainer = styled.section`
   background: #ffffff;
   padding: 12px 16px;
+  display: flex;
   /* If there is more space, give it to this element */
   flex-grow: 1;
   flex-shrink: 1;
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
   overflow: auto;

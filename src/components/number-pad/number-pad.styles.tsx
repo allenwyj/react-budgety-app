@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const NumberPadSection = styled.section`
   display: flex;
   flex-direction: column;
+  // flex-shrink 收缩因子，主轴剩余空间为负时，元素分配到剩余空间的比率, 0将不缩小适应
+  flex-shrink: 0;
   > .output {
     background: white;
     font-size: 20px;
@@ -67,7 +69,7 @@ export const NumberPadSection = styled.section`
     }
 
     // for iphone 5
-    @media screen and (max-height: 570px) {
+    @media screen and (max-height: 670px) {
       > button {
         height: 40px;
 
