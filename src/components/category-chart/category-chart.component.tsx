@@ -9,6 +9,7 @@ import {
   DEFAULT_INCOME_TAGS
 } from '../../data/tags-name';
 import { CategoryChartContainer } from './category-chart.styles';
+import { loadPieoptions } from './category-chart.options';
 
 type Props = {
   category: '-' | '+';
@@ -57,33 +58,16 @@ const CategoryChart: React.FC<Props> = props => {
     return totalAmountById;
   };
 
-  const options = {
-    tooltip: {
-      trigger: 'item',
-      formatter: '{b} : <span>$</span>{c} ({d}%)'
-    },
-    series: [
-      {
-        type: 'pie',
-        radius: '70%',
-        center: ['50%', '50%'],
-        data: getRecordsByTag(),
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      }
-    ]
+  const getOptions = () => {
+    const array = getRecordsByTag();
+    return loadPieoptions(array);
   };
 
   return (
     <CategoryChartContainer>
       <p>Monthly Overview - {day(new Date()).format('MM/YYYY')}</p>
       <div className={'category-chart-wrapper'}>
-        <Chart options={options} />
+        <Chart options={getOptions()} />
       </div>
     </CategoryChartContainer>
   );
