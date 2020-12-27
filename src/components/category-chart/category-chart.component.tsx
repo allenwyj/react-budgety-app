@@ -34,7 +34,6 @@ const CategoryChart: React.FC<Props> = props => {
       }
       hashRecords[key].push(record.amount);
     });
-    console.log(hashRecords);
     return hashRecords;
   };
 

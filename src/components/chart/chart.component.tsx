@@ -30,7 +30,6 @@ const Chart: React.FC<Props> = props => {
 
   useEffect(() => {
     chart.current.setOption(options);
-    console.log('re-render');
   }, [options]);
 
   return <EchartsContainer ref={container} />;

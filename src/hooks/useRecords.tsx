@@ -21,7 +21,6 @@ export const useRecords = () => {
       window.localStorage.getItem('records') || '[]'
     );
     setRecords(tempRecords);
-    console.log('mounted');
   }, []);
 
   useUpdate(() => {
@@ -30,7 +29,6 @@ export const useRecords = () => {
     const tempExpense = calSameMonthCategoryTotalAmount('-');
     setTotalIncome(tempIncome);
     setTotalExpense(tempExpense);
-    console.log('set');
   }, records);
 
   const thisMonth = day(new Date()).format('YYYY-MM');
