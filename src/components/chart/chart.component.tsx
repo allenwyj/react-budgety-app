@@ -25,7 +25,7 @@ const Chart: React.FC<Props> = props => {
       // container.current.style.height = `${(width - 20) * 1.2}px`;
       chart.current = echarts.init(container.current);
     } else console.warn('Error!');
-    chart.current.setOption(options);
+    //chart.current.setOption(options);
   }, []);
 
   useEffect(() => {

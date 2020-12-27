@@ -64,7 +64,10 @@ const Statistics: React.FC = () => {
           </DateTitleContainer>
           <div>
             {sortedRecords.map(rec => (
-              <RecordItem key={rec.createdAt} rec={rec} />
+              <RecordItem
+                key={rec.createdAt + rec.tagIds[0] + rec.amount}
+                rec={rec}
+              />
             ))}
           </div>
         </div>
