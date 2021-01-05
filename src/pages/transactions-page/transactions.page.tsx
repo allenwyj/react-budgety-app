@@ -6,12 +6,12 @@ import {
   CategoryWrapper,
   DateContainer,
   DateTitleContainer
-} from './transaction.styles';
+} from './transactions.styles';
 import day from 'dayjs';
 import RecordItem from '../../components/record-item/record-item.component';
 import BudgetTile from '../../components/budget-tile/budget-tile.component';
 
-const TransactionPage: React.FC = () => {
+const Transactions: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const { records } = useRecords();
 
@@ -81,4 +81,4 @@ const TransactionPage: React.FC = () => {
   );
 };
 
-export default TransactionPage;
+export default Transactions;
