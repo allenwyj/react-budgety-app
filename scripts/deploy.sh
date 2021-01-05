@@ -3,7 +3,7 @@
 yarn build &&
 cd build &&
 git init &&
-git remote add origin https://github.com/allenwyj/react-budgety-app-website-modify.git &&
+git remote add origin git@github.com:allenwyj/finics.git &&
 git add . &&
 git commit -m "deploy" &&
 git branch -M main &&
