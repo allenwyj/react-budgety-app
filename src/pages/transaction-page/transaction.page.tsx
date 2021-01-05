@@ -6,12 +6,12 @@ import {
   CategoryWrapper,
   DateContainer,
   DateTitleContainer
-} from './statistics.styles';
+} from './transaction.styles';
 import day from 'dayjs';
 import RecordItem from '../../components/record-item/record-item.component';
 import BudgetTile from '../../components/budget-tile/budget-tile.component';
 
-const Statistics: React.FC = () => {
+const Transaction: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const { records } = useRecords();
 
@@ -76,4 +76,4 @@ const Statistics: React.FC = () => {
   );
 };
 
-export default Statistics;
+export default Transaction;

@@ -13,9 +13,9 @@ const Nav: React.FC = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/statistics" activeClassName="selected">
-          <Icon name="chart" />
-          Statistics
+        <NavLink to="/transaction" activeClassName="selected">
+          <Icon name="transaction" />
+          Transaction
         </NavLink>
       </li>
       <li>
