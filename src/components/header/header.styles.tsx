@@ -18,11 +18,17 @@ export const HeaderContainer = styled.header`
     fill: white;
   }
 
-  > h5 {
-    font-size: 20px;
-  }
-
   > p {
     font-size: 16px;
   }
+`;
+
+export const IconSpacer = styled.div`
+  height: 24px;
+  width: 24px;
+`;
+
+export const AppName = styled.h5`
+  font-size: 20px;
+  letter-spacing: 0.3em;
 `;

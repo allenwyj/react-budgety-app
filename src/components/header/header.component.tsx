@@ -1,13 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import styled from 'styled-components';
 import Icon from '../icon/icon.component';
-import { HeaderContainer } from './header.styles';
-
-const IconSpacer = styled.div`
-  height: 24px;
-  width: 24px;
-`;
+import { HeaderContainer, IconSpacer, AppName } from './header.styles';
 
 const Header: React.FC<RouteComponentProps> = ({ history, match }) => {
   const goAddPage = () => {
@@ -17,7 +11,7 @@ const Header: React.FC<RouteComponentProps> = ({ history, match }) => {
   return (
     <HeaderContainer>
       <Icon name="user" />
-      <h5>Allen's Budgety</h5>
+      <AppName>FINICS</AppName>
       {match.path !== '/budget' ? (
         <Icon name="add" onClick={goAddPage} />
       ) : (
