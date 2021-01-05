@@ -6,6 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import styled from 'styled-components';
+import MobileViewOnly from './components/display-mobile-only/display-mobile-only.component';
 import NoMatch from './pages/404-page/no-match.page';
 import Budget from './pages/budget-page/budget.page';
 import OverviewPage from './pages/overview-page/overview.page';
@@ -29,6 +30,7 @@ function App() {
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>
+      <MobileViewOnly />
     </AppWrapper>
   );
 }
