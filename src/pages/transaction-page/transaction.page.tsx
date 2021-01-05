@@ -11,7 +11,7 @@ import day from 'dayjs';
 import RecordItem from '../../components/record-item/record-item.component';
 import BudgetTile from '../../components/budget-tile/budget-tile.component';
 
-const Transaction: React.FC = () => {
+const TransactionPage: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const { records } = useRecords();
 
@@ -76,4 +76,4 @@ const Transaction: React.FC = () => {
   );
 };
 
-export default Transaction;
+export default TransactionPage;
