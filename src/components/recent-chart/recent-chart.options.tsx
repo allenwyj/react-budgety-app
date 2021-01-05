@@ -24,21 +24,28 @@ export const loadOptions = (
       show: false
     },
     tooltip: {
-      show: true,
-      triggerOn: 'click',
-      position: 'top',
-      formatter: '<span>$</span>{c}'
+      show: false
     },
     series: [
       {
-        symbol: 'circle',
-        symbolSize: 10,
+        type: 'bar',
         itemStyle: { color: category === '-' ? '#f60' : '#6da0f3' },
         data: values,
-        type: 'bar',
         showBackground: true,
         backgroundStyle: {
           color: 'rgba(220, 220, 220, 0.8)'
+        },
+        label: {
+          show: true,
+          fontSize: 14,
+          position: 'top',
+          formatter: (params: { value: number }) => {
+            if (params.value > 0) {
+              return `$${params.value}`;
+            } else {
+              return '';
+            }
+          }
         }
       }
     ]

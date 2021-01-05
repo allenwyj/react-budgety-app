@@ -21,10 +21,14 @@ export const RecordItemContainer = styled.div`
       font-size: 12px;
       margin: auto;
       color: #999;
+      max-width: 40vw;
+      @media only screen and (min-device-width: 520px) {
+        max-width: 200px;
+      }
     }
     > .time {
-        font-size: 12px;
-        color: #d1d1d1
+      font-size: 12px;
+      color: #d1d1d1;
     }
   }
   > .icon {

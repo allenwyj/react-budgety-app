@@ -20,7 +20,7 @@ const TransactionPage: React.FC = () => {
 
   // putting different records into different key:value based on date.
   categorisedRecords.forEach(record => {
-    const key = day(record.createdAt).format('DD/MM/YYYY');
+    const key = day(record.createdAt).format('YYYY-MM-DD');
     if (!(key in hashRecords)) {
       hashRecords[key] = [];
     }
@@ -35,7 +35,7 @@ const TransactionPage: React.FC = () => {
     return 0;
   });
 
-  const today = day(new Date()).format('DD/MM/YYYY');
+  const today = day(new Date()).format('YYYY-MM-DD');
   // if the latest record exists and its date is today, then rename it.
   sortedArray[0] &&
     sortedArray[0][0] &&
@@ -49,29 +49,34 @@ const TransactionPage: React.FC = () => {
       <CategoryWrapper>
         <Categories value={category} onChange={value => setCategory(value)} />
       </CategoryWrapper>
-      {sortedArray.map(([date, sortedRecords]) => (
-        <div key={date}>
-          <DateTitleContainer>
-            <DateContainer>{date}</DateContainer>
-            <p>
-              <span>$ {category}</span>
-              {sortedRecords.reduce(
-                (accumulator, currentRecord) =>
-                  accumulator + currentRecord.amount,
-                0
-              )}
-            </p>
-          </DateTitleContainer>
-          <div>
-            {sortedRecords.map(rec => (
-              <RecordItem
-                key={rec.createdAt + rec.tagIds[0] + rec.amount}
-                rec={rec}
-              />
-            ))}
+      {sortedArray.map(([date, sortedRecords]) => {
+        if (date !== 'Today') {
+          date = day(date).format('DD/MM/YYYY');
+        }
+        return (
+          <div key={date}>
+            <DateTitleContainer>
+              <DateContainer>{date}</DateContainer>
+              <p>
+                <span>$ {category}</span>
+                {sortedRecords.reduce(
+                  (accumulator, currentRecord) =>
+                    accumulator + currentRecord.amount,
+                  0
+                )}
+              </p>
+            </DateTitleContainer>
+            <div>
+              {sortedRecords.map(rec => (
+                <RecordItem
+                  key={rec.createdAt + rec.tagIds[0] + rec.amount}
+                  rec={rec}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </Layout>
   );
 };

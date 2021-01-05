@@ -16,6 +16,7 @@ const AppWrapper = styled.div`
   color: #333;
   max-width: 520px;
   margin: auto;
+  background: linen;
 `;
 
 function App() {
