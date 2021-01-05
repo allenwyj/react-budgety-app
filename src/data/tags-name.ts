@@ -1,6 +1,7 @@
 export type DefaultTags = { id: number; name: string };
 
 export const DEFAULT_EXPENSE_TAGS: DefaultTags[] = [
+  { id: 999, name: 'others' },
   { id: 1, name: 'food' },
   { id: 2, name: 'drinks' },
   { id: 3, name: 'fruits' },
@@ -17,14 +18,13 @@ export const DEFAULT_EXPENSE_TAGS: DefaultTags[] = [
   { id: 14, name: 'car' },
   { id: 15, name: 'bills' },
   { id: 16, name: 'health' },
-  { id: 17, name: 'education' },
-  { id: 999, name: 'others' }
+  { id: 17, name: 'education' }
 ];
 
 export const DEFAULT_INCOME_TAGS: DefaultTags[] = [
+  { id: 999, name: 'others' },
   { id: 101, name: 'salary' },
   { id: 102, name: 'part-time' },
   { id: 103, name: 'bonus' },
-  { id: 104, name: 'investment' },
-  { id: 999, name: 'others' }
+  { id: 104, name: 'investment' }
 ];
