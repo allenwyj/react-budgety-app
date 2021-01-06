@@ -16,7 +16,10 @@ const RecordItem: React.FC<Props> = ({ rec }) => {
   const tagName = tag ? capitalisedFirstLetter(tag.name) : '';
 
   return (
-    <RecordItemContainer className="tags oneLine">
+    <RecordItemContainer
+      to={'/transactions/' + rec.id}
+      className="tags oneLine"
+    >
       <Icon name={tag.name} />
       <div>
         {tagName}

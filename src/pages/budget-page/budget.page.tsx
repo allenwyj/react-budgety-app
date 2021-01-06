@@ -17,7 +17,8 @@ const DEFAULT_RECORD = {
   createdAt: convertDateToString(new Date()), // default: the current time
   note: '',
   category: '-' as Category,
-  amount: 0
+  amount: 0,
+  id: 0 // id will be assigned while adding.
 };
 
 function Budget() {

@@ -5,7 +5,8 @@ import Layout from '../shared/layout.page';
 import {
   CategoryWrapper,
   DateContainer,
-  DateTitleContainer
+  DateTitleContainer,
+  EmptyRecordContainer
 } from './transactions.styles';
 import day from 'dayjs';
 import RecordItem from '../../components/record-item/record-item.component';
@@ -13,7 +14,7 @@ import BudgetTile from '../../components/budget-tile/budget-tile.component';
 
 const Transactions: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
-  const { records } = useRecords();
+  const { records, totalIncome, totalExpense } = useRecords();
 
   const hashRecords: { [K: string]: NewRecordItem[] } = {};
   const categorisedRecords = records.filter(rec => rec.category === category);
@@ -42,13 +43,17 @@ const Transactions: React.FC = () => {
     sortedArray[0][0] === today &&
     (sortedArray[0][0] = 'Today');
 
-  // TODO: RecordItem has the same key
   return (
     <Layout>
-      <BudgetTile />
+      <BudgetTile totalExpense={totalExpense} totalIncome={totalIncome} />
       <CategoryWrapper>
         <Categories value={category} onChange={value => setCategory(value)} />
       </CategoryWrapper>
+      {sortedArray.length === 0 && (
+        <EmptyRecordContainer>
+          <p>No Records</p>
+        </EmptyRecordContainer>
+      )}
       {sortedArray.map(([date, sortedRecords]) => {
         if (date !== 'Today') {
           date = day(date).format('DD/MM/YYYY');
@@ -69,7 +74,7 @@ const Transactions: React.FC = () => {
             <div>
               {sortedRecords.map(rec => (
                 <RecordItem
-                  key={rec.createdAt + rec.tagIds[0] + rec.amount}
+                  key={rec.id}
                   rec={rec}
                 />
               ))}

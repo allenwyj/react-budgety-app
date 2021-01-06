@@ -13,7 +13,7 @@ const TopBar: React.FC = () => {
   return (
     <TopBarWrapper>
       <Icon name="left" onClick={onClickBack} />
-      <span>Edit Tag</span>
+      <span>Edit Transaction</span>
       <Icon />
     </TopBarWrapper>
   );

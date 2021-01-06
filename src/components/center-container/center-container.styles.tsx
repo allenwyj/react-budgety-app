@@ -6,3 +6,10 @@ export const CenterContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+`;

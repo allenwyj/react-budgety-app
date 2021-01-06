@@ -15,7 +15,7 @@ export const LabelContainer = styled.label<Props>`
   > input {
     //display: block;
     width: 100%;
-    height: ${({ isHigher }) => (isHigher ? '72px' : '44px')};
+    height: ${({ isHigher }) => (isHigher ? '100px' : '44px')};
     background: none;
     border: none;
   }

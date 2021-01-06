@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useUpdate } from './useUpdate';
 import day from 'dayjs';
 
 export type NewRecordItem = {
+  id: number;
   tagIds: number[];
   note: string;
   category: '+' | '-';
@@ -12,7 +13,6 @@ export type NewRecordItem = {
 
 export const useRecords = () => {
   const [records, setRecords] = useState<NewRecordItem[]>([]);
-  // TODO: useRef for totalIncome and totalExpense
   const [totalIncome, setTotalIncome] = useState<number>(0);
   const [totalExpense, setTotalExpense] = useState<number>(0);
 
@@ -20,20 +20,25 @@ export const useRecords = () => {
     const tempRecords = JSON.parse(
       window.localStorage.getItem('records') || '[]'
     );
+    const tempIncome = calSameMonthCategoryTotalAmount('+', tempRecords);
+    const tempExpense = calSameMonthCategoryTotalAmount('-', tempRecords);
     setRecords(tempRecords);
-  }, []);
-
-  useUpdate(() => {
-    window.localStorage.setItem('records', JSON.stringify(records));
-    const tempIncome = calSameMonthCategoryTotalAmount('+');
-    const tempExpense = calSameMonthCategoryTotalAmount('-');
     setTotalIncome(tempIncome);
     setTotalExpense(tempExpense);
-  }, records);
+  }, []);
 
-  const thisMonth = day(new Date()).format('YYYY-MM');
+  const saveLocal = useCallback(() => {
+    // TODO: DidMounted will set records once - unnecessary
+    window.localStorage.setItem('records', JSON.stringify(records));
+  }, [records]);
 
-  const calSameMonthCategoryTotalAmount = (cat: '-' | '+') => {
+  useUpdate(saveLocal, records);
+
+  const calSameMonthCategoryTotalAmount = (
+    cat: '-' | '+',
+    records: NewRecordItem[]
+  ) => {
+    const thisMonth = day(new Date()).format('YYYY-MM');
     const categorisedRecords = records.filter(
       rec =>
         rec.category === cat && day(thisMonth).isSame(rec.createdAt, 'month')
@@ -55,10 +60,37 @@ export const useRecords = () => {
       return false;
     }
 
-    setRecords([...records, newRecord]);
+    // append ID
+    setRecords([...records, { ...newRecord, id: Date.now() }]);
     alert('Saved!');
     return true;
   };
 
-  return { records, totalIncome, totalExpense, addRecord };
+  const findRecord = (id: number) => {
+    return records.filter(record => record.id === id)[0];
+  };
+
+  const updateRecord = (record: any) => {
+    setRecords(
+      records.map(currentRecord =>
+        currentRecord.id === record.id ? record : currentRecord
+      )
+    );
+    alert('Updated!');
+  };
+
+  const deleteRecord = (id: number) => {
+    setRecords(records.filter(record => record.id !== id));
+    alert('Deleted!');
+  };
+
+  return {
+    records,
+    totalIncome,
+    totalExpense,
+    addRecord,
+    findRecord,
+    updateRecord,
+    deleteRecord
+  };
 };

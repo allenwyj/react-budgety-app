@@ -1,15 +1,21 @@
 import React from 'react';
-import { useRecords } from '../../hooks/useRecords';
+import { useBudget } from '../../hooks/useBudget';
 import {
   BudgetTileContainer,
   ExpenseNumberContainer,
   IncomeNumberConatiner,
   TitleContainer
 } from './budget-tile.styles';
-import { useBudget } from '../../hooks/useBudget';
 
-const BudgetTile: React.FC = () => {
-  const { totalIncome, totalExpense } = useRecords();
+interface BudgetTileProps {
+  totalIncome: number;
+  totalExpense: number;
+}
+
+const BudgetTile: React.FC<BudgetTileProps> = ({
+  totalIncome,
+  totalExpense
+}) => {
   const { budget, addBudget } = useBudget();
 
   const onUserClick = () => {

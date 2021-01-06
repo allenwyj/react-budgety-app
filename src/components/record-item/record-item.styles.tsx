@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const RecordItemContainer = styled.div`
+export const RecordItemContainer = styled(Link)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;

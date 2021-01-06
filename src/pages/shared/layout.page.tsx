@@ -20,12 +20,13 @@ const Main = styled.div`
 
 type Props = {
   className?: string;
+  noHeader?: boolean;
 };
 
 const Layout: React.FC<Props> = props => {
   return (
     <PageContaniner>
-      <Header />
+      {!props.noHeader && <Header />}
       <Main className={props.className}>{props.children}</Main>
       <Nav />
     </PageContaniner>

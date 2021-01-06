@@ -12,10 +12,19 @@ export const DateTitleContainer = styled.div`
   padding: 8px 16px;
   line-height: 20px;
   > p {
-    color: #949393
+    color: #949393;
   }
 `;
 
 export const DateContainer = styled.h3`
   font-size: inherit;
+`;
+
+export const EmptyRecordContainer = styled.div`
+  font-size: 16px;
+  padding: 8px 16px;
+  line-height: 20px;
+  > p {
+    color: #949393;
+  }
 `;
